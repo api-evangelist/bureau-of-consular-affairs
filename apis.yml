@@ -1,35 +1,44 @@
 aid: bureau-of-consular-affairs
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bureau-of-consular-affairs/refs/heads/main/apis.yml
-apis:
-  - aid: bureau-of-consular-affairs:bureau-of-consular-affairs
-    name: Bureau of Consular Affairs
-    tags:
-      - API
-    humanURL: https://cadatacatalog.state.gov/dataset/
-    properties:
-      - url: https://cadatacatalog.state.gov/dataset/
-        type: Documentation
-    description: >-
-      You can also access this registry using the API (see API Docs). About
-      Bureau of Consular Affairs  CKAN API  CKAN Association  Open Data  Privacy
-      Policy - US ...
 name: Bureau of Consular Affairs
 tags:
   - Federal Government
-type: Contract
+  - Passports
+  - Visas
+  - Travel
+type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-25'
-modified: '2024-12-22'
-position: Consuming
+modified: '2026-03-16'
+position: Consumer
 description: >-
   The Bureau of Consular Affairs (CA) is a bureau of the United States
   Department of State reporting to the under secretary of state for management.
   The mission of the Bureau is to administer laws, formulate regulations and
   implement policies relating to the broad range of consular services and
   immigration.
+apis:
+  - aid: bureau-of-consular-affairs:bureau-of-consular-affairs
+    name: Bureau of Consular Affairs
+    tags:
+      - Federal Government
+    humanURL: https://cadatacatalog.state.gov/dataset/
+    properties:
+      - url: https://cadatacatalog.state.gov/dataset/
+        type: Documentation
+    description: >-
+      The CA Data Catalog provides access to datasets from the Bureau of
+      Consular Affairs, available via the CKAN API.
+common:
+  - type: Website
+    url: https://travel.state.gov/
+  - type: Portal
+    url: https://cadatacatalog.state.gov/
+  - type: Privacy Policy
+    url: https://travel.state.gov/content/travel/en/legal/privacy-policy.html
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
