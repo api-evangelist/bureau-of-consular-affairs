@@ -9,7 +9,7 @@ tags:
   - Travel Advisories
   - Visas
 type: Index
-x-type: government
+kind: government
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-25'
@@ -79,7 +79,7 @@ common:
     url: https://travel.state.gov/
   - type: Portal
     url: https://cadatacatalog.state.gov/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://travel.state.gov/content/travel/en/legal/privacy-policy.html
   - type: CKAN API
     url: https://cadatacatalog.state.gov/api/3/action/package_list
