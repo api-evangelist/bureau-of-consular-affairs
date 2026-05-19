@@ -75,6 +75,8 @@ apis:
       of Consular Affairs, available as downloadable datasets through the CA
       data catalog.
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/bureau-of-consular-affairs
   - type: Website
     url: https://travel.state.gov/
   - type: Portal
