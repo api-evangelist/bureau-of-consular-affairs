@@ -1,0 +1,633 @@
+openapi: 3.1.0
+info:
+  title: CA Data Catalog (CKAN) API
+  description: |
+    Best-effort OpenAPI 3.1 description of the Bureau of Consular Affairs (CA) Data Catalog
+    API. The catalog runs on the standard CKAN platform, which exposes its functionality at
+    `/api/3/action/{action_name}` using both GET and POST. CKAN actions are described in the
+    CKAN Action API documentation.
+
+    All CA Data Catalog actions are publicly readable; write actions require an `Authorization`
+    header carrying a CKAN API token (obtained from the CKAN user profile).
+  version: "3.0"
+  contact:
+    name: Bureau of Consular Affairs
+    url: https://cadatacatalog.state.gov/dataset/
+  license:
+    name: U.S. Government Work
+    url: https://www.usa.gov/government-works
+servers:
+  - url: https://cadatacatalog.state.gov/api/3
+    description: CA Data Catalog CKAN Action API
+tags:
+  - name: Discovery
+    description: Read-only discovery actions (packages, groups, organizations, tags).
+  - name: Datastore
+    description: Datastore queries over tabular resources.
+  - name: Write
+    description: Write actions (require API token).
+paths:
+  /action/site_read:
+    get:
+      tags: [Discovery]
+      summary: Check whether the site is readable
+      operationId: siteRead
+      responses:
+        "200":
+          description: Site readable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessBoolean"
+  /action/package_list:
+    get:
+      tags: [Discovery]
+      summary: List all dataset (package) names
+      operationId: packageList
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of dataset names
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResult"
+  /action/current_package_list_with_resources:
+    get:
+      tags: [Discovery]
+      summary: List datasets along with their resources
+      operationId: currentPackageListWithResources
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: page
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Datasets with resources
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PackagesResult"
+  /action/package_show:
+    get:
+      tags: [Discovery]
+      summary: Retrieve a single dataset (package) by id or name
+      operationId: packageShow
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: use_default_schema
+          in: query
+          schema:
+            type: boolean
+        - name: include_tracking
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Dataset
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PackageResult"
+  /action/package_search:
+    get:
+      tags: [Discovery]
+      summary: Search datasets with Solr query syntax
+      operationId: packageSearch
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: fq
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+        - name: rows
+          in: query
+          schema:
+            type: integer
+        - name: start
+          in: query
+          schema:
+            type: integer
+        - name: facet.field
+          in: query
+          schema:
+            type: string
+        - name: include_drafts
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Search result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResult"
+  /action/resource_show:
+    get:
+      tags: [Discovery]
+      summary: Retrieve a single resource by id
+      operationId: resourceShow
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Resource
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResourceResult"
+  /action/resource_search:
+    get:
+      tags: [Discovery]
+      summary: Search resources within a dataset
+      operationId: resourceSearch
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: fields
+          in: query
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          schema:
+            type: string
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Resource search result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResult"
+  /action/group_list:
+    get:
+      tags: [Discovery]
+      summary: List dataset groups
+      operationId: groupList
+      parameters:
+        - name: all_fields
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Groups
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResult"
+  /action/group_show:
+    get:
+      tags: [Discovery]
+      summary: Retrieve a single group
+      operationId: groupShow
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: include_datasets
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /action/organization_list:
+    get:
+      tags: [Discovery]
+      summary: List organizations
+      operationId: organizationList
+      parameters:
+        - name: all_fields
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Organizations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResult"
+  /action/organization_show:
+    get:
+      tags: [Discovery]
+      summary: Retrieve a single organization
+      operationId: organizationShow
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: include_datasets
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Organization
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /action/tag_list:
+    get:
+      tags: [Discovery]
+      summary: List tags
+      operationId: tagList
+      parameters:
+        - name: query
+          in: query
+          schema:
+            type: string
+        - name: vocabulary_id
+          in: query
+          schema:
+            type: string
+        - name: all_fields
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Tags
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResult"
+  /action/tag_show:
+    get:
+      tags: [Discovery]
+      summary: Retrieve a single tag
+      operationId: tagShow
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: include_datasets
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Tag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /action/datastore_search:
+    get:
+      tags: [Datastore]
+      summary: Search a datastore (DataStore extension)
+      operationId: datastoreSearch
+      parameters:
+        - name: resource_id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: filters
+          in: query
+          schema:
+            type: string
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: fields
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Datastore search result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResult"
+  /action/datastore_search_sql:
+    get:
+      tags: [Datastore]
+      summary: Run a SQL query against the datastore
+      operationId: datastoreSearchSql
+      parameters:
+        - name: sql
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: SQL query result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResult"
+  /action/package_create:
+    post:
+      tags: [Write]
+      summary: Create a dataset (package)
+      operationId: packageCreate
+      security:
+        - apiToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PackageResult"
+  /action/package_update:
+    post:
+      tags: [Write]
+      summary: Update a dataset (package)
+      operationId: packageUpdate
+      security:
+        - apiToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PackageResult"
+  /action/package_delete:
+    post:
+      tags: [Write]
+      summary: Delete a dataset
+      operationId: packageDelete
+      security:
+        - apiToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [id]
+              properties:
+                id:
+                  type: string
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessBoolean"
+components:
+  securitySchemes:
+    apiToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: CKAN API token, generated from the CKAN user profile.
+  schemas:
+    ListResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: array
+          items: {}
+    Result:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: object
+          additionalProperties: true
+    SuccessBoolean:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: boolean
+    PackageResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: "#/components/schemas/Package"
+    PackagesResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: array
+          items:
+            $ref: "#/components/schemas/Package"
+    ResourceResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: "#/components/schemas/Resource"
+    SearchResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: object
+          properties:
+            count:
+              type: integer
+            results:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            facets:
+              type: object
+              additionalProperties: true
+            sort:
+              type: string
+    Package:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        title:
+          type: string
+        notes:
+          type: string
+        author:
+          type: string
+        author_email:
+          type: string
+        maintainer:
+          type: string
+        maintainer_email:
+          type: string
+        license_id:
+          type: string
+        owner_org:
+          type: string
+        state:
+          type: string
+        type:
+          type: string
+        metadata_created:
+          type: string
+          format: date-time
+        metadata_modified:
+          type: string
+          format: date-time
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              display_name:
+                type: string
+        groups:
+          type: array
+          items:
+            type: object
+        resources:
+          type: array
+          items:
+            $ref: "#/components/schemas/Resource"
+        extras:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        package_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        format:
+          type: string
+        url:
+          type: string
+        mimetype:
+          type: string
+        size:
+          type: integer
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type: string
+          format: date-time
+        datastore_active:
+          type: boolean
+        state:
+          type: string
