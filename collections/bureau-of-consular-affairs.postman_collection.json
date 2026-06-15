@@ -1,0 +1,1827 @@
+{
+  "item": [
+    {
+      "id": "16be3f36-3bff-42b2-90da-b867f00c775f",
+      "name": "Discovery",
+      "description": {
+        "content": "Read-only discovery actions (packages, groups, organizations, tags).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "745fc02c-1739-4536-93ff-088010ddfe8b",
+          "name": "Check whether the site is readable",
+          "request": {
+            "name": "Check whether the site is readable",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "site_read"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0e53b54-0c7b-4743-be47-dd1dbcff7fbb",
+              "name": "Site readable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "site_read"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb7265ce-4b4a-44a2-b449-4045e71b3ad1",
+          "name": "List all dataset (package) names",
+          "request": {
+            "name": "List all dataset (package) names",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88611965-b07f-422c-9b47-6522dad0f909",
+              "name": "List of dataset names",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "757ab8a2-609a-4588-a375-8e92e4792f55",
+          "name": "List datasets along with their resources",
+          "request": {
+            "name": "List datasets along with their resources",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "current_package_list_with_resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b62d360f-ac3d-4afe-9bb7-bd9155be7088",
+              "name": "Datasets with resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "current_package_list_with_resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"notes\": \"string\",\n      \"author\": \"string\",\n      \"author_email\": \"string\",\n      \"maintainer\": \"string\",\n      \"maintainer_email\": \"string\",\n      \"license_id\": \"string\",\n      \"owner_org\": \"string\",\n      \"state\": \"string\",\n      \"type\": \"string\",\n      \"metadata_created\": \"2019-06-20T22:27:32.465Z\",\n      \"metadata_modified\": \"1977-11-12T13:43:43.413Z\",\n      \"tags\": [\n        {\n          \"name\": \"string\",\n          \"display_name\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"display_name\": \"string\"\n        }\n      ],\n      \"resources\": [\n        {\n          \"id\": \"string\",\n          \"package_id\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"format\": \"string\",\n          \"url\": \"string\",\n          \"mimetype\": \"string\",\n          \"size\": 7353,\n          \"created\": \"1977-11-29T15:19:04.367Z\",\n          \"last_modified\": \"1992-04-24T03:30:38.711Z\",\n          \"datastore_active\": true,\n          \"state\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"package_id\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"format\": \"string\",\n          \"url\": \"string\",\n          \"mimetype\": \"string\",\n          \"size\": 4824,\n          \"created\": \"1981-12-22T05:51:37.970Z\",\n          \"last_modified\": \"2024-06-19T18:02:33.031Z\",\n          \"datastore_active\": false,\n          \"state\": \"string\"\n        }\n      ],\n      \"extras\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"notes\": \"string\",\n      \"author\": \"string\",\n      \"author_email\": \"string\",\n      \"maintainer\": \"string\",\n      \"maintainer_email\": \"string\",\n      \"license_id\": \"string\",\n      \"owner_org\": \"string\",\n      \"state\": \"string\",\n      \"type\": \"string\",\n      \"metadata_created\": \"1951-09-18T13:58:33.927Z\",\n      \"metadata_modified\": \"1996-11-10T10:23:01.956Z\",\n      \"tags\": [\n        {\n          \"name\": \"string\",\n          \"display_name\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"display_name\": \"string\"\n        }\n      ],\n      \"resources\": [\n        {\n          \"id\": \"string\",\n          \"package_id\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"format\": \"string\",\n          \"url\": \"string\",\n          \"mimetype\": \"string\",\n          \"size\": 6237,\n          \"created\": \"1989-01-19T04:22:20.674Z\",\n          \"last_modified\": \"2015-05-12T16:46:55.400Z\",\n          \"datastore_active\": false,\n          \"state\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"package_id\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"format\": \"string\",\n          \"url\": \"string\",\n          \"mimetype\": \"string\",\n          \"size\": 8073,\n          \"created\": \"1982-06-16T08:38:16.684Z\",\n          \"last_modified\": \"2002-05-20T16:53:11.392Z\",\n          \"datastore_active\": false,\n          \"state\": \"string\"\n        }\n      ],\n      \"extras\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0af5855c-5921-48e6-9b84-ce69d963e11e",
+          "name": "Retrieve a single dataset (package) by id or name",
+          "request": {
+            "name": "Retrieve a single dataset (package) by id or name",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "use_default_schema",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_tracking",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1e7c763-b031-4528-a1d2-94aed4359a5a",
+              "name": "Dataset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "use_default_schema",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_tracking",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": true,\n  \"result\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"notes\": \"string\",\n    \"author\": \"string\",\n    \"author_email\": \"string\",\n    \"maintainer\": \"string\",\n    \"maintainer_email\": \"string\",\n    \"license_id\": \"string\",\n    \"owner_org\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"string\",\n    \"metadata_created\": \"1951-11-21T10:16:13.739Z\",\n    \"metadata_modified\": \"1949-09-30T09:27:09.380Z\",\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      }\n    ],\n    \"resources\": [\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 6382,\n        \"created\": \"1995-06-10T14:04:22.507Z\",\n        \"last_modified\": \"2003-03-30T09:30:03.259Z\",\n        \"datastore_active\": true,\n        \"state\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 6236,\n        \"created\": \"1969-05-23T22:40:21.715Z\",\n        \"last_modified\": \"1981-06-26T07:22:39.484Z\",\n        \"datastore_active\": false,\n        \"state\": \"string\"\n      }\n    ],\n    \"extras\": [\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6ddb776-81b6-43a6-a5a7-3cc1aca3efbf",
+          "name": "Search datasets with Solr query syntax",
+          "request": {
+            "name": "Search datasets with Solr query syntax",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fq",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "facet.field",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_drafts",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2682102-02bd-4ecd-8b7d-3ed5758f57ca",
+              "name": "Search result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "facet.field",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_drafts",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"count\": 7180,\n    \"results\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 3180.7104116252162\n      },\n      {\n        \"key_0\": false\n      }\n    ],\n    \"facets\": {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    \"sort\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf2b865b-9691-449a-ab5d-759e62a8979a",
+          "name": "Retrieve a single resource by id",
+          "request": {
+            "name": "Retrieve a single resource by id",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "resource_show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29b16368-6342-430d-a7f6-da3c650bf08b",
+              "name": "Resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "resource_show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": true,\n  \"result\": {\n    \"id\": \"string\",\n    \"package_id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"format\": \"string\",\n    \"url\": \"string\",\n    \"mimetype\": \"string\",\n    \"size\": 4669,\n    \"created\": \"2004-04-10T15:20:09.254Z\",\n    \"last_modified\": \"1982-06-12T18:14:47.607Z\",\n    \"datastore_active\": false,\n    \"state\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "559a99f4-46ba-438c-b961-2785d77c712a",
+          "name": "Search resources within a dataset",
+          "request": {
+            "name": "Search resources within a dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "resource_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "174cd1d8-e440-46f9-8a33-5bc73b02102e",
+              "name": "Resource search result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "resource_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"count\": 7180,\n    \"results\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 3180.7104116252162\n      },\n      {\n        \"key_0\": false\n      }\n    ],\n    \"facets\": {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    \"sort\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5319f2cf-14e3-4671-a0db-fbd9a70de770",
+          "name": "List dataset groups",
+          "request": {
+            "name": "List dataset groups",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "group_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "all_fields",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a3949eb-64c2-40a1-8f28-594d99470373",
+              "name": "Groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "group_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "all_fields",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f64a1bb9-1ae2-41a0-9bc4-9cd1f732639d",
+          "name": "Retrieve a single group",
+          "request": {
+            "name": "Retrieve a single group",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "group_show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "include_datasets",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "186f4736-b812-48d7-b6e8-4d7738246767",
+              "name": "Group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "group_show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_datasets",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"key_0\": false,\n    \"key_1\": 5487\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "854e49b8-b7b0-40ca-bacc-6a0d0a17faf9",
+          "name": "List organizations",
+          "request": {
+            "name": "List organizations",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "organization_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "all_fields",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37ee49aa-0699-4113-8477-6077fbf56a7a",
+              "name": "Organizations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "organization_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "all_fields",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de9042cb-eb8c-4315-bf45-a47f0aab6f2c",
+          "name": "Retrieve a single organization",
+          "request": {
+            "name": "Retrieve a single organization",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "organization_show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "include_datasets",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d970984-1158-468a-a010-da930c49740d",
+              "name": "Organization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "organization_show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_datasets",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"key_0\": false,\n    \"key_1\": 5487\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1fd2b7a3-6de4-41d9-ba44-40e9a74ec789",
+          "name": "List tags",
+          "request": {
+            "name": "List tags",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "tag_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "vocabulary_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "all_fields",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7870a0eb-c3c7-4e9b-9b56-1006cd5f16e8",
+              "name": "Tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "tag_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vocabulary_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "all_fields",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a124db6-d982-450b-9b90-2b83b12b179d",
+          "name": "Retrieve a single tag",
+          "request": {
+            "name": "Retrieve a single tag",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "tag_show"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "include_datasets",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c9bfb94-d4a1-467f-9955-14715deec002",
+              "name": "Tag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "tag_show"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_datasets",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"key_0\": false,\n    \"key_1\": 5487\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "11997fa6-5bf7-4497-a82f-69980e789b89",
+      "name": "Datastore",
+      "description": {
+        "content": "Datastore queries over tabular resources.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "564dec84-ff24-4802-ab43-cc20c4cf8880",
+          "name": "Search a datastore (DataStore extension)",
+          "request": {
+            "name": "Search a datastore (DataStore extension)",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "datastore_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resource_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0188437-2368-4ea8-b810-125a2c70c251",
+              "name": "Datastore search result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "datastore_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"count\": 7180,\n    \"results\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 3180.7104116252162\n      },\n      {\n        \"key_0\": false\n      }\n    ],\n    \"facets\": {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    \"sort\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d70f8ee-60f9-4ba5-b0c7-67c340212679",
+          "name": "Run a SQL query against the datastore",
+          "request": {
+            "name": "Run a SQL query against the datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "datastore_search_sql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sql",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "184997e1-70a5-4ace-9f72-ead72647e393",
+              "name": "SQL query result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "datastore_search_sql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"count\": 7180,\n    \"results\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 3180.7104116252162\n      },\n      {\n        \"key_0\": false\n      }\n    ],\n    \"facets\": {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    \"sort\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3a1058bf-8174-4c82-9e60-610da0c8bc55",
+      "name": "Write",
+      "description": {
+        "content": "Write actions (require API token).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4fa9910c-47e6-43e2-81cf-54873ffc0810",
+          "name": "Create a dataset (package)",
+          "request": {
+            "name": "Create a dataset (package)",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89a19d41-73fb-495e-b258-98b49a9326a9",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 1661.29987138953,\n  \"key_1\": 482,\n  \"key_2\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": true,\n  \"result\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"notes\": \"string\",\n    \"author\": \"string\",\n    \"author_email\": \"string\",\n    \"maintainer\": \"string\",\n    \"maintainer_email\": \"string\",\n    \"license_id\": \"string\",\n    \"owner_org\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"string\",\n    \"metadata_created\": \"1951-11-21T10:16:13.739Z\",\n    \"metadata_modified\": \"1949-09-30T09:27:09.380Z\",\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      }\n    ],\n    \"resources\": [\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 6382,\n        \"created\": \"1995-06-10T14:04:22.507Z\",\n        \"last_modified\": \"2003-03-30T09:30:03.259Z\",\n        \"datastore_active\": true,\n        \"state\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 6236,\n        \"created\": \"1969-05-23T22:40:21.715Z\",\n        \"last_modified\": \"1981-06-26T07:22:39.484Z\",\n        \"datastore_active\": false,\n        \"state\": \"string\"\n      }\n    ],\n    \"extras\": [\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e534f0d-7b8f-4481-9b7f-0092ad2b060c",
+          "name": "Update a dataset (package)",
+          "request": {
+            "name": "Update a dataset (package)",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3777e78-e3a6-4e82-aa5c-e3b8c2e0d1e2",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 1661.29987138953,\n  \"key_1\": 482,\n  \"key_2\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": true,\n  \"result\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"notes\": \"string\",\n    \"author\": \"string\",\n    \"author_email\": \"string\",\n    \"maintainer\": \"string\",\n    \"maintainer_email\": \"string\",\n    \"license_id\": \"string\",\n    \"owner_org\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"string\",\n    \"metadata_created\": \"1951-11-21T10:16:13.739Z\",\n    \"metadata_modified\": \"1949-09-30T09:27:09.380Z\",\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      }\n    ],\n    \"resources\": [\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 6382,\n        \"created\": \"1995-06-10T14:04:22.507Z\",\n        \"last_modified\": \"2003-03-30T09:30:03.259Z\",\n        \"datastore_active\": true,\n        \"state\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 6236,\n        \"created\": \"1969-05-23T22:40:21.715Z\",\n        \"last_modified\": \"1981-06-26T07:22:39.484Z\",\n        \"datastore_active\": false,\n        \"state\": \"string\"\n      }\n    ],\n    \"extras\": [\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9499af2-3a66-40e2-aabc-02bdd169ab32",
+          "name": "Delete a dataset",
+          "request": {
+            "name": "Delete a dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "950614b9-e57d-4baa-85ea-98c5c96303db",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cadatacatalog.state.gov/api/3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a44d4902-d152-4595-8413-7a0f492f1b10",
+    "name": "CA Data Catalog (CKAN) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the Bureau of Consular Affairs (CA) Data Catalog\nAPI. The catalog runs on the standard CKAN platform, which exposes its functionality at\n`/api/3/action/{action_name}` using both GET and POST. CKAN actions are described in the\nCKAN Action API documentation.\n\nAll CA Data Catalog actions are publicly readable; write actions require an `Authorization`\nheader carrying a CKAN API token (obtained from the CKAN user profile).\n\n\nContact Support:\n Name: Bureau of Consular Affairs",
+      "type": "text/plain"
+    }
+  }
+}

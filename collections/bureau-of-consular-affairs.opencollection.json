@@ -1,0 +1,490 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CA Data Catalog (CKAN) API",
+    "version": "3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check whether the site is readable",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/site_read"
+          },
+          "docs": "Check whether the site is readable"
+        },
+        {
+          "info": {
+            "name": "List all dataset (package) names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_list",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all dataset (package) names"
+        },
+        {
+          "info": {
+            "name": "List datasets along with their resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/current_package_list_with_resources",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List datasets along with their resources"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single dataset (package) by id or name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_show",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "use_default_schema",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_tracking",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a single dataset (package) by id or name"
+        },
+        {
+          "info": {
+            "name": "Search datasets with Solr query syntax",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fq",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "facet.field",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_drafts",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search datasets with Solr query syntax"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single resource by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/resource_show",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a single resource by id"
+        },
+        {
+          "info": {
+            "name": "Search resources within a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/resource_search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search resources within a dataset"
+        },
+        {
+          "info": {
+            "name": "List dataset groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/group_list",
+            "params": [
+              {
+                "name": "all_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List dataset groups"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/group_show",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_datasets",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a single group"
+        },
+        {
+          "info": {
+            "name": "List organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/organization_list",
+            "params": [
+              {
+                "name": "all_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List organizations"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/organization_show",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_datasets",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a single organization"
+        },
+        {
+          "info": {
+            "name": "List tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/tag_list",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vocabulary_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "all_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List tags"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/tag_show",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_datasets",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a single tag"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Datastore",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search a datastore (DataStore extension)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/datastore_search",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search a datastore (DataStore extension)"
+        },
+        {
+          "info": {
+            "name": "Run a SQL query against the datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/datastore_search_sql",
+            "params": [
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Run a SQL query against the datastore"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Write",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a dataset (package)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a dataset (package)"
+        },
+        {
+          "info": {
+            "name": "Update a dataset (package)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a dataset (package)"
+        },
+        {
+          "info": {
+            "name": "Delete a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a dataset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
