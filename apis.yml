@@ -75,6 +75,10 @@ apis:
       of Consular Affairs, available as downloadable datasets through the CA
       data catalog.
 common:
+  - type: DomainSecurity
+    url: security/bureau-of-consular-affairs-domain-security.yml
+  - type: Authentication
+    url: authentication/bureau-of-consular-affairs-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/bureau-of-consular-affairs
   - type: Website

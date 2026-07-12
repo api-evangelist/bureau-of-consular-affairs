@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/bureau-of-consular-affairs-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiToken
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: CKAN API token, generated from the CKAN user profile.
+  sources:
+  - openapi/bureau-of-consular-affairs-openapi.yml
