@@ -75,6 +75,8 @@ apis:
       of Consular Affairs, available as downloadable datasets through the CA
       data catalog.
 common:
+  - type: AgenticAccess
+    url: agentic-access/bureau-of-consular-affairs-agentic-access.yml
   - type: DomainSecurity
     url: security/bureau-of-consular-affairs-domain-security.yml
   - type: Authentication
