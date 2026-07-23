@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: CA Data Catalog (CKAN) Datastore API
+  description: 'Best-effort OpenAPI 3.1 description of the Bureau of Consular Affairs (CA) Data Catalog
+
+    API. The catalog runs on the standard CKAN platform, which exposes its functionality at
+
+    `/api/3/action/{action_name}` using both GET and POST. CKAN actions are described in the
+
+    CKAN Action API documentation.
+
+
+    All CA Data Catalog actions are publicly readable; write actions require an `Authorization`
+
+    header carrying a CKAN API token (obtained from the CKAN user profile).
+
+    '
+  version: '3.0'
+  contact:
+    name: Bureau of Consular Affairs
+    url: https://cadatacatalog.state.gov/dataset/
+  license:
+    name: U.S. Government Work
+    url: https://www.usa.gov/government-works
+servers:
+- url: https://cadatacatalog.state.gov/api/3
+  description: CA Data Catalog CKAN Action API
+tags:
+- name: Datastore
+  description: Datastore queries over tabular resources.
+paths:
+  /action/datastore_search:
+    get:
+      tags:
+      - Datastore
+      summary: Search a datastore (DataStore extension)
+      operationId: datastoreSearch
+      parameters:
+      - name: resource_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: filters
+        in: query
+        schema:
+          type: string
+      - name: q
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      - name: fields
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Datastore search result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+  /action/datastore_search_sql:
+    get:
+      tags:
+      - Datastore
+      summary: Run a SQL query against the datastore
+      operationId: datastoreSearchSql
+      parameters:
+      - name: sql
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SQL query result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+components:
+  schemas:
+    SearchResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: object
+          properties:
+            count:
+              type: integer
+            results:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            facets:
+              type: object
+              additionalProperties: true
+            sort:
+              type: string
+  securitySchemes:
+    apiToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: CKAN API token, generated from the CKAN user profile.
