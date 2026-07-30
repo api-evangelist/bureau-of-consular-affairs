@@ -10,7 +10,20 @@ tags:
   - Visas
 type: Index
 kind: government
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bureau-of-consular-affairs.png
 access: 3rd-Party
 created: '2024-11-25'
 modified: '2026-04-21'
@@ -22,58 +35,86 @@ description: >-
   CA provides travel advisories, passport and visa information, and publishes
   datasets through its data catalog accessible via the CKAN API.
 apis:
-  - aid: bureau-of-consular-affairs:ca-data-catalog-ckan-api
-    name: Bureau of Consular Affairs Data Catalog (CKAN API)
-    tags:
-      - CKAN
-      - Data Catalog
-      - Federal Government
-      - Open Data
-    humanURL: https://cadatacatalog.state.gov/
-    baseURL: https://cadatacatalog.state.gov/api/3/action
-    properties:
-      - url: https://cadatacatalog.state.gov/dataset/
-        type: Documentation
-      - url: https://cadatacatalog.state.gov/api/3
-        type: DataAPI
-    description: >-
-      The CA Data Catalog provides access to datasets from the Bureau of
-      Consular Affairs via the CKAN API. It includes passport issuance statistics,
-      visa issuance data, adoption statistics, and other consular affairs data.
-      The CKAN API supports dataset search, retrieval, and resource downloads.
-  - aid: bureau-of-consular-affairs:travel-advisories
-    name: Travel Advisories API
-    tags:
-      - Federal Government
-      - Travel
-      - Travel Advisories
-    humanURL: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/
-    baseURL: https://travel.state.gov
-    properties:
-      - url: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/
-        type: Documentation
-      - url: https://travelmaps.state.gov/TSGMap/
-        type: DataAPI
-    description: >-
-      The State Department publishes travel advisory levels (Level 1-4) for
-      every country. Advisory data is available for consumption by travel
-      applications and services to help inform travelers about safety conditions.
-  - aid: bureau-of-consular-affairs:passport-issuance-statistics
-    name: Passport Issuance Statistics
-    tags:
-      - Federal Government
-      - Passports
-      - Statistics
-    humanURL: https://cadatacatalog.state.gov/dataset/passportstatistics
-    properties:
-      - url: https://cadatacatalog.state.gov/dataset/passportstatistics
-        type: DataAPI
-      - url: https://cadatacatalog.state.gov/dataset/passportstatistics
-        type: Documentation
-    description: >-
-      Annual and monthly passport issuance statistics published by the Bureau
-      of Consular Affairs, available as downloadable datasets through the CA
-      data catalog.
+- aid: bureau-of-consular-affairs:ca-data-catalog-ckan-api
+  name: Bureau of Consular Affairs Data Catalog (CKAN API)
+  tags:
+  - CKAN
+  - Data Catalog
+  - Federal Government
+  - Open Data
+  humanURL: https://cadatacatalog.state.gov/
+  baseURL: https://cadatacatalog.state.gov/api/3/action
+  properties:
+  - url: https://cadatacatalog.state.gov/dataset/
+    type: Documentation
+  - url: https://cadatacatalog.state.gov/api/3
+    type: DataAPI
+  description: >-
+    The CA Data Catalog provides access to datasets from the Bureau of Consular Affairs via the CKAN API.
+    It includes passport issuance statistics, visa issuance data, adoption statistics, and other consular
+    affairs data. The CKAN API supports dataset search, retrieval, and resource downloads.
+- aid: bureau-of-consular-affairs:travel-advisories
+  name: Travel Advisories API
+  tags:
+  - Federal Government
+  - Travel
+  - Travel Advisories
+  humanURL: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/
+  baseURL: https://travel.state.gov
+  properties:
+  - url: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/
+    type: Documentation
+  - url: https://travelmaps.state.gov/TSGMap/
+    type: DataAPI
+  description: >-
+    The State Department publishes travel advisory levels (Level 1-4) for every country. Advisory data
+    is available for consumption by travel applications and services to help inform travelers about safety
+    conditions.
+- aid: bureau-of-consular-affairs:passport-issuance-statistics
+  name: Passport Issuance Statistics
+  tags:
+  - Federal Government
+  - Passports
+  - Statistics
+  humanURL: https://cadatacatalog.state.gov/dataset/passportstatistics
+  properties:
+  - url: https://cadatacatalog.state.gov/dataset/passportstatistics
+    type: DataAPI
+  - url: https://cadatacatalog.state.gov/dataset/passportstatistics
+    type: Documentation
+  description: >-
+    Annual and monthly passport issuance statistics published by the Bureau of Consular Affairs, available
+    as downloadable datasets through the CA data catalog.
+- aid: bureau-of-consular-affairs:bureau-of-consular-affairs-datastore-api
+  name: Bureau of Consular Affairs Datastore API
+  description: Datastore queries over tabular resources.
+  humanURL: https://cadatacatalog.state.gov/
+  baseURL: https://cadatacatalog.state.gov/api/3/action
+  tags:
+  - Datastore
+  properties:
+  - type: OpenAPI
+    url: openapi/bureau-of-consular-affairs-datastore-api-openapi.yml
+- aid: bureau-of-consular-affairs:bureau-of-consular-affairs-discovery-api
+  name: Bureau of Consular Affairs Discovery API
+  description: Read-only discovery actions (packages, groups, organizations, tags).
+  humanURL: https://cadatacatalog.state.gov/
+  baseURL: https://cadatacatalog.state.gov/api/3/action
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml
+- aid: bureau-of-consular-affairs:bureau-of-consular-affairs-write-api
+  name: Bureau of Consular Affairs Write API
+  description: Write actions (require API token).
+  humanURL: https://cadatacatalog.state.gov/
+  baseURL: https://cadatacatalog.state.gov/api/3/action
+  tags:
+  - Write
+  properties:
+  - type: OpenAPI
+    url: openapi/bureau-of-consular-affairs-write-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/bureau-of-consular-affairs-agentic-access.yml
