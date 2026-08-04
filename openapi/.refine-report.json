@@ -1,0 +1,18 @@
+{
+  "provider": "bureau-of-consular-affairs",
+  "sources": [
+    "bureau-of-consular-affairs-datastore-api-openapi.yml",
+    "bureau-of-consular-affairs-discovery-api-openapi.yml",
+    "bureau-of-consular-affairs-write-api-openapi.yml"
+  ],
+  "outputs": [
+    "bureau-of-consular-affairs-datastore-api-openapi.yml",
+    "bureau-of-consular-affairs-discovery-api-openapi.yml",
+    "bureau-of-consular-affairs-write-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
