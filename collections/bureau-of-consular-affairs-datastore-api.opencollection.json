@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CA Data Catalog (CKAN) Datastore API",
+    "version": "3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datastore",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search a datastore (DataStore extension)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/datastore_search",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search a datastore (DataStore extension)"
+        },
+        {
+          "info": {
+            "name": "Run a SQL query against the datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cadatacatalog.state.gov/api/3/action/datastore_search_sql",
+            "params": [
+              {
+                "name": "sql",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Run a SQL query against the datastore"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,374 @@
+{
+  "item": [
+    {
+      "id": "32cf03ee-2bca-434d-9bda-18631b7c6b1e",
+      "name": "Write",
+      "description": {
+        "content": "Write actions (require API token).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "113355ff-df91-4a9b-8a02-d1861aebea16",
+          "name": "Create a dataset (package)",
+          "request": {
+            "name": "Create a dataset (package)",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 4564.908666773182,\n  \"key_1\": 3398.6649622887744\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2c3dfcb-eee6-45e4-babe-424f4cfcbdbc",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": true,\n  \"key_1\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": true,\n  \"result\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"notes\": \"string\",\n    \"author\": \"string\",\n    \"author_email\": \"string\",\n    \"maintainer\": \"string\",\n    \"maintainer_email\": \"string\",\n    \"license_id\": \"string\",\n    \"owner_org\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"string\",\n    \"metadata_created\": \"1983-09-24T05:13:08.385Z\",\n    \"metadata_modified\": \"2017-06-16T04:01:30.082Z\",\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      }\n    ],\n    \"resources\": [\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 135,\n        \"created\": \"2024-09-24T11:08:16.852Z\",\n        \"last_modified\": \"2013-11-21T23:50:51.863Z\",\n        \"datastore_active\": false,\n        \"state\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 7195,\n        \"created\": \"1948-03-30T12:36:17.979Z\",\n        \"last_modified\": \"1971-02-16T08:48:23.282Z\",\n        \"datastore_active\": true,\n        \"state\": \"string\"\n      }\n    ],\n    \"extras\": [\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30c0d680-cbf5-4fac-9264-0411b2a1473b",
+          "name": "Update a dataset (package)",
+          "request": {
+            "name": "Update a dataset (package)",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 4564.908666773182,\n  \"key_1\": 3398.6649622887744\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d5f55693-34a2-44fb-94e7-1d64c7003bd2",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": true,\n  \"key_1\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": true,\n  \"result\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"title\": \"string\",\n    \"notes\": \"string\",\n    \"author\": \"string\",\n    \"author_email\": \"string\",\n    \"maintainer\": \"string\",\n    \"maintainer_email\": \"string\",\n    \"license_id\": \"string\",\n    \"owner_org\": \"string\",\n    \"state\": \"string\",\n    \"type\": \"string\",\n    \"metadata_created\": \"1983-09-24T05:13:08.385Z\",\n    \"metadata_modified\": \"2017-06-16T04:01:30.082Z\",\n    \"tags\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\"\n      }\n    ],\n    \"resources\": [\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 135,\n        \"created\": \"2024-09-24T11:08:16.852Z\",\n        \"last_modified\": \"2013-11-21T23:50:51.863Z\",\n        \"datastore_active\": false,\n        \"state\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"package_id\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"format\": \"string\",\n        \"url\": \"string\",\n        \"mimetype\": \"string\",\n        \"size\": 7195,\n        \"created\": \"1948-03-30T12:36:17.979Z\",\n        \"last_modified\": \"1971-02-16T08:48:23.282Z\",\n        \"datastore_active\": true,\n        \"state\": \"string\"\n      }\n    ],\n    \"extras\": [\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"key\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80303df8-5276-447c-a13d-bb36c91b8258",
+          "name": "Delete a dataset",
+          "request": {
+            "name": "Delete a dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "package_delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c70df18-5f49-450e-a058-1e5fe0c68ae6",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "package_delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cadatacatalog.state.gov/api/3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e7a31fa6-dd0a-41fe-8569-14115b39b881",
+    "name": "CA Data Catalog (CKAN) Datastore Write API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the Bureau of Consular Affairs (CA) Data Catalog\nAPI. The catalog runs on the standard CKAN platform, which exposes its functionality at\n`/api/3/action/{action_name}` using both GET and POST. CKAN actions are described in the\nCKAN Action API documentation.\n\nAll CA Data Catalog actions are publicly readable; write actions require an `Authorization`\nheader carrying a CKAN API token (obtained from the CKAN user profile).\n\n\nContact Support:\n Name: Bureau of Consular Affairs",
+      "type": "text/plain"
+    }
+  }
+}

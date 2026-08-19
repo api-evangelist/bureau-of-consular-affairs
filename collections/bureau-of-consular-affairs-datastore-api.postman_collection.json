@@ -1,0 +1,248 @@
+{
+  "item": [
+    {
+      "id": "de1936f4-89a5-4c79-bf7d-f4153c10b845",
+      "name": "Datastore",
+      "description": {
+        "content": "Datastore queries over tabular resources.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4fa9e4eb-461a-4967-a113-e40f04bebd1f",
+          "name": "Search a datastore (DataStore extension)",
+          "request": {
+            "name": "Search a datastore (DataStore extension)",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "datastore_search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resource_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15b16082-2bb7-4551-a7f2-c50504965f94",
+              "name": "Datastore search result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "datastore_search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"count\": 6305,\n    \"results\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": false,\n        \"key_3\": 8618.312037578291\n      },\n      {\n        \"key_0\": false\n      }\n    ],\n    \"facets\": {\n      \"key_0\": 5212.811098758201,\n      \"key_1\": 3577.971511647635\n    },\n    \"sort\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82dcd06c-cd66-46d6-9058-35242cce5c4d",
+          "name": "Run a SQL query against the datastore",
+          "request": {
+            "name": "Run a SQL query against the datastore",
+            "description": {},
+            "url": {
+              "path": [
+                "action",
+                "datastore_search_sql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sql",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b37bc05b-8377-41dc-8268-af1558d5158a",
+              "name": "SQL query result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "action",
+                    "datastore_search_sql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sql",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"help\": \"string\",\n  \"success\": false,\n  \"result\": {\n    \"count\": 6305,\n    \"results\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": false,\n        \"key_3\": 8618.312037578291\n      },\n      {\n        \"key_0\": false\n      }\n    ],\n    \"facets\": {\n      \"key_0\": 5212.811098758201,\n      \"key_1\": 3577.971511647635\n    },\n    \"sort\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cadatacatalog.state.gov/api/3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4d3d950c-8665-4ef1-93d5-8f6143e3b710",
+    "name": "CA Data Catalog (CKAN) Datastore API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Best-effort OpenAPI 3.1 description of the Bureau of Consular Affairs (CA) Data Catalog\nAPI. The catalog runs on the standard CKAN platform, which exposes its functionality at\n`/api/3/action/{action_name}` using both GET and POST. CKAN actions are described in the\nCKAN Action API documentation.\n\nAll CA Data Catalog actions are publicly readable; write actions require an `Authorization`\nheader carrying a CKAN API token (obtained from the CKAN user profile).\n\n\nContact Support:\n Name: Bureau of Consular Affairs",
+      "type": "text/plain"
+    }
+  }
+}

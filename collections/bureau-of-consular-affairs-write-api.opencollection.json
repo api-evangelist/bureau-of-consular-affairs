@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CA Data Catalog (CKAN) Datastore Write API",
+    "version": "3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Write",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a dataset (package)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a dataset (package)"
+        },
+        {
+          "info": {
+            "name": "Update a dataset (package)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a dataset (package)"
+        },
+        {
+          "info": {
+            "name": "Delete a dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cadatacatalog.state.gov/api/3/action/package_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a dataset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
