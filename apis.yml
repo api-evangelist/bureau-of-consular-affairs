@@ -3,6 +3,12 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/bureau-of-consular-affairs/refs/heads/main/apis.yml
 name: Bureau of Consular Affairs
 tags:
+  - Federal-Government
+  - Passports
+  - Travel
+  - Travel Advisories
+  - Visas
+tags_raw:
   - Federal Government
   - Passports
   - Travel
@@ -40,6 +46,11 @@ apis:
   tags:
   - CKAN
   - Data Catalog
+  - Federal-Government
+  - Open Data
+  tags_raw:
+  - CKAN
+  - Data Catalog
   - Federal Government
   - Open Data
   humanURL: https://cadatacatalog.state.gov/
@@ -56,6 +67,10 @@ apis:
 - aid: bureau-of-consular-affairs:travel-advisories
   name: Travel Advisories API
   tags:
+  - Federal-Government
+  - Travel
+  - Travel Advisories
+  tags_raw:
   - Federal Government
   - Travel
   - Travel Advisories
@@ -73,6 +88,10 @@ apis:
 - aid: bureau-of-consular-affairs:passport-issuance-statistics
   name: Passport Issuance Statistics
   tags:
+  - Federal-Government
+  - Passports
+  - Statistics
+  tags_raw:
   - Federal Government
   - Passports
   - Statistics
@@ -110,7 +129,8 @@ apis:
   description: Write actions (require API token).
   humanURL: https://cadatacatalog.state.gov/
   baseURL: https://cadatacatalog.state.gov/api/3/action
-  tags:
+  tags: []
+  tags_raw:
   - Write
   properties:
   - type: OpenAPI
