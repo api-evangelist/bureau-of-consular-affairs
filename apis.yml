@@ -34,17 +34,18 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bureau-of-consular-affairs.png
 access: 3rd-Party
 created: '2024-11-25'
 modified: '2026-04-21'
-position: Consumer
+position: Consuming
 description: >-
   The Bureau of Consular Affairs (CA) is a bureau of the United States
   Department of State responsible for administering laws, formulating regulations,
