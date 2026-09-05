@@ -1,0 +1,113 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/*.yml ; openapi/bureau-of-consular-affairs-arcgis-*.json ;
+  https://docs.ckan.org/en/latest/api/index.html
+note: >-
+  Three surfaces with three different sets of conventions: the CKAN Action API (CA Data Catalog),
+  the ArcGIS Online Feature Services (travel advisories, embassies, adoption statistics) and the
+  Travel Advisories RSS feed. Nothing below is a bureau-authored convention — the bureau publishes
+  no developer guide — so each row names the platform it comes from.
+authentication:
+  style: api-key-header
+  detail: >-
+    CKAN API token in an Authorization header, required only for the three write actions. Every
+    discovery and datastore action, every ArcGIS Feature Service query and the RSS feed are
+    anonymous. See authentication/bureau-of-consular-affairs-authentication.yml.
+  cross_ref: authentication/bureau-of-consular-affairs-authentication.yml
+idempotency:
+  supported: false
+  coverage: none
+  mechanism: null
+  detail: >-
+    No Idempotency-Key header, no client-supplied request id, no replay window anywhere in the CKAN
+    Action API or the ArcGIS query interface. The three mutating operations (packageCreate,
+    packageUpdate, packageDelete) have no replay protection: a retried packageCreate creates a second
+    dataset. Read operations are naturally idempotent but that is a property of GET, not a contract
+    the provider offers.
+pagination:
+  style: limit-offset
+  surfaces:
+    - surface: ckan
+      params: [limit, offset]
+      operations: [packageList, packageSearch, resourceSearch, datastoreSearch]
+      response_fields: [result.count, result.results]
+    - surface: arcgis
+      params: [resultOffset, resultRecordCount]
+      max_page_size: 2000
+      truncation_signal: exceededTransferLimit
+      detail: >-
+        maxRecordCount is 2000 on the Travel Advisory Levels layer; a response that hit the ceiling
+        carries "exceededTransferLimit": true (observed live 2026-09-05).
+field_selection:
+  supported: true
+  detail: >-
+    ArcGIS only — outFields selects columns and returnGeometry=false drops geometry, which is the
+    difference between a 200-byte and a multi-megabyte response on the country-polygon layers. CKAN
+    has no sparse-fieldset parameter; package_show returns the whole package document.
+metadata:
+  detail: >-
+    CKAN packages carry free-form extras[]; ArcGIS layers carry editor-tracking fields (Editor,
+    EditDate, CreationDate, Creator, GlobalID) that are exposed to readers.
+request_tracing:
+  request_id_header: null
+  detail: No request-id or correlation header is documented or observed on any surface.
+versioning:
+  style: uri-path
+  detail: /api/3/action/ pins the CKAN Action API generation. Cross-ref lifecycle/.
+  cross_ref: lifecycle/bureau-of-consular-affairs-lifecycle.yml
+error_envelope:
+  shape: '{help, success, error:{__type, message}}'
+  http_status_lies: true
+  detail: >-
+    Both CKAN and ArcGIS return HTTP 200 on failure and put the failure in the body. This is the
+    single most important convention on this provider for an agent: branch on the body, never on the
+    status code.
+  cross_ref: errors/bureau-of-consular-affairs-problem-types.yml
+rate_limit_signaling:
+  headers: []
+  detail: >-
+    No X-RateLimit-* or RateLimit-* headers are documented, and none could be observed — the CKAN
+    host answers 403 to this crawler behind Cloudflare. The only hard, published ceiling on any
+    surface is the ArcGIS maxRecordCount of 2000 rows per query.
+  cross_ref: rate-limits/bureau-of-consular-affairs-rate-limits.yml
+reversibility:
+  grade: documented
+  applicability: partial
+  detail: >-
+    The read surfaces (discovery, datastore, ArcGIS query, RSS) have no write operations, so
+    reversibility is not applicable to them. The CKAN write surface has three mutating operations and
+    exactly one of them has a documented reversal path.
+  write_surfaces:
+    - operation: packageDelete
+      operationId: packageDelete
+      spec: openapi/bureau-of-consular-affairs-write-api-openapi.yml
+      reversal: packageUpdate
+      reversal_detail: >-
+        CKAN's package_delete is a soft delete — it sets the dataset state to "deleted" rather than
+        removing it, and a sysadmin can restore it by setting state back to "active". Permanent
+        removal is a separate action (dataset_purge) that this catalog's harvested spec does not
+        expose.
+      window: null
+      window_note: >-
+        No retention window is published. CKAN documents that the row survives the delete but states
+        no period after which it is purged, and the bureau publishes nothing. NOT graded verified for
+        exactly that reason — asserting a restore window nobody wrote down would be inventing the one
+        fact an operator would rely on.
+      source: https://docs.ckan.org/en/latest/api/index.html
+    - operation: packageCreate
+      operationId: packageCreate
+      spec: openapi/bureau-of-consular-affairs-write-api-openapi.yml
+      reversal: packageDelete
+      window: null
+    - operation: packageUpdate
+      operationId: packageUpdate
+      spec: openapi/bureau-of-consular-affairs-write-api-openapi.yml
+      reversal: null
+      reversal_detail: >-
+        No undo. package_update replaces the dataset document; the previous values are not returned
+        to the caller and no revision-restore action is exposed on this catalog.
+      window: null
+dry_run_mode:
+  supported: false
+  detail: No dry-run, validate-only or preview parameter on any mutating operation.

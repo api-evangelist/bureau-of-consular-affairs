@@ -1,0 +1,245 @@
+generated: '2026-09-05'
+method: probed
+source: live HTTPS probes of the named /.well-known/ path list on every host in apis.yml plus the OpenAPI servers[]
+  host and the ArcGIS Online tenant
+hit_count: 0
+note: 'Zero documents served. Two of the bureau''s own hosts (cadatacatalog.state.gov and travel.state.gov) sit
+  behind a Cloudflare WAF that answers 403 to this crawler on every path, so their absence is UNPROVEN — it is our
+  block, not their gap. www.state.gov, state.gov and travelmaps.state.gov were reachable and served nothing at any
+  probed path. No WellKnown or SecurityTxt pointer is emitted: nothing returned a real document. Note that the Department
+  of State DOES publish a vulnerability disclosure policy — it is just not at /.well-known/security.txt; see security/bureau-of-consular-affairs-vulnerability-disclosure.yml.'
+hosts:
+- host: https://cadatacatalog.state.gov
+  path_echo_control: passed
+  negative_control:
+    path: /.well-known/bureau-of-consular-affairs-negative-control-7f3ab91c.json
+    status: 403
+  hit_count: 0
+  note: Cloudflare WAF returns 403 'Sorry, you have been blocked' to every request from this crawler, including
+    the CKAN Action API itself. Nothing could be read; these are OUR blocks, not evidence the host serves nothing.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /.well-known/ucp.json
+    status: 403
+  - path: /.well-known/acp.json
+    status: 403
+  - path: /.well-known/aauth-resource.json
+    status: 403
+  - path: /.well-known/apis.json
+    status: 403
+  - path: /apis.json
+    status: 403
+  - path: /apis.yml
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+  - path: /llms.txt
+    status: 403
+- host: https://travel.state.gov
+  path_echo_control: passed
+  negative_control:
+    path: /.well-known/bureau-of-consular-affairs-negative-control-7f3ab91c.json
+    status: 403
+  hit_count: 0
+  note: Cloudflare WAF returns 403 to every /.well-known/ and root path from this crawler. The /_res/rss/ feed paths
+    are NOT blocked and returned 200 (see lifecycle/ and apis.yml).
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /.well-known/ucp.json
+    status: 403
+  - path: /.well-known/acp.json
+    status: 403
+  - path: /.well-known/aauth-resource.json
+    status: 403
+  - path: /.well-known/apis.json
+    status: 403
+  - path: /apis.json
+    status: 403
+  - path: /apis.yml
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+  - path: /llms.txt
+    status: 403
+- host: https://www.state.gov
+  path_echo_control: passed
+  negative_control:
+    path: /.well-known/bureau-of-consular-affairs-negative-control-7f3ab91c.json
+    status: 404
+  hit_count: 0
+  note: Departmental site. /.well-known/security.txt 301s and the followed URL returns a 403 'Technical Difficulties'
+    interstitial; every other path is a soft 404 (168 KB HTML error page). No document served.
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/ucp.json
+    status: 404
+  - path: /.well-known/acp.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+  - path: /.well-known/apis.json
+    status: 404
+  - path: /apis.json
+    status: 404
+  - path: /apis.yml
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://state.gov
+  path_echo_control: passed
+  negative_control:
+    path: /.well-known/bureau-of-consular-affairs-negative-control-7f3ab91c.json
+    status: 302
+  hit_count: 0
+  note: Apex 302s to www.state.gov for every path, including the negative control. No document served.
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+  - path: /.well-known/openid-configuration
+    status: 302
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+  - path: /.well-known/oauth-protected-resource
+    status: 302
+  - path: /.well-known/api-catalog
+    status: 302
+  - path: /.well-known/ai-plugin.json
+    status: 302
+  - path: /.well-known/ucp.json
+    status: 302
+  - path: /.well-known/acp.json
+    status: 302
+  - path: /.well-known/aauth-resource.json
+    status: 302
+  - path: /.well-known/apis.json
+    status: 302
+  - path: /apis.json
+    status: 302
+  - path: /apis.yml
+    status: 302
+  - path: /.well-known/agent-card.json
+    status: 302
+  - path: /.well-known/agent.json
+    status: 302
+  - path: /llms.txt
+    status: 302
+- host: https://travelmaps.state.gov
+  path_echo_control: passed
+  negative_control:
+    path: /.well-known/bureau-of-consular-affairs-negative-control-7f3ab91c.json
+    status: 404
+  hit_count: 0
+  note: Apache 2.4.52 static host for the TSGMap iframe wrapper. Clean 404s on every path, including the negative
+    control.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/ucp.json
+    status: 404
+  - path: /.well-known/acp.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+  - path: /.well-known/apis.json
+    status: 404
+  - path: /apis.json
+    status: 404
+  - path: /apis.yml
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://services6.arcgis.com
+  path_echo_control: passed
+  negative_control:
+    path: /.well-known/bureau-of-consular-affairs-negative-control-7f3ab91c.json
+    status: 403
+  hit_count: 0
+  note: Esri ArcGIS Online tenant R6wlO6UHmSzqm9Vs that serves the bureau's public Feature Services. Third-party
+    host, not controlled by the bureau; /.well-known/* is 403 by Esri edge policy for every path including the negative
+    control.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /.well-known/ucp.json
+    status: 403
+  - path: /.well-known/acp.json
+    status: 403
+  - path: /.well-known/aauth-resource.json
+    status: 403
+  - path: /.well-known/apis.json
+    status: 403
+  - path: /apis.json
+    status: 403
+  - path: /apis.yml
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+  - path: /llms.txt
+    status: 403

@@ -1,0 +1,62 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://travel.state.gov/_res/rss/TAsTWs.xml ; https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services ;
+  openapi/bureau-of-consular-affairs-discovery-api-openapi.yml
+versioning:
+  scheme: uri-path
+  current: '3'
+  surface: CKAN Action API
+  detail: >-
+    The CA Data Catalog runs CKAN and pins the API generation in the path — /api/3/action/{action}.
+    The bureau publishes no versioning policy of its own; the "3" is CKAN's Action API generation and
+    has been stable across CKAN 2.x. The ArcGIS Feature Services report currentVersion 12 (ArcGIS
+    Online 12.0.0), which is Esri's platform version, not a bureau-declared API version.
+  docs: null
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No deprecation policy, Sunset header (RFC 8594) or Deprecation header is published for any
+    surface. Data-level retirement happens by dataset: yearly adoption-statistics Feature Services
+    are added rather than superseded, and older Travel Advisory map services (Travel_Advisories_7_30,
+    Travel_Advisories_CubaUpdate0823, TravelAdvisories_haitiUpdate) remain published alongside the
+    current "(2024)" view layer with no notice marking the earlier ones stale.
+sla:
+  url: null
+  uptime_target: null
+  detail: No SLA or uptime commitment is published for any bureau API surface.
+status_page: null
+status_page_detail: >-
+  No status page found. status.state.gov does not resolve; travel.state.gov/status returns the
+  Cloudflare 403 interstitial served to this crawler for every travel.state.gov page path.
+change_feed:
+  detail: >-
+    The closest thing to a published change log is the Travel Advisories RSS feed, which is dated
+    per item and carries an explicit "what changed" sentence in each description (e.g. "There were
+    no changes to the advisory level or risk indicators. Advisory summary was updated."). It is a
+    content feed, not an API change log — it tells you when an ADVISORY changed, never when the
+    INTERFACE changed.
+  feeds:
+    - url: https://travel.state.gov/_res/rss/TAsTWs.xml
+      title: 'travel.state.gov: Travel Advisories'
+      format: RSS 2.0
+      http_status: 200
+      items_observed: 216
+      most_recent_item: '2026-09-04'
+      fetched: '2026-09-05'
+    - url: https://travel.state.gov/_res/rss/TAs.xml
+      http_status: 200
+      note: Served but empty at fetch time (343 bytes, no items).
+      fetched: '2026-09-05'
+    - url: https://travel.state.gov/_res/rss/TWs.xml
+      http_status: 200
+      note: Served but empty at fetch time (343 bytes, no items).
+      fetched: '2026-09-05'
+deprecated_operations: []
+notes:
+  - >-
+    An archived developer portal exists at https://2017-2021.state.gov/developer/ (HTTP 200). It is a
+    frozen National Archives snapshot of the 2017-2021 administration's site, not a live program —
+    treated as historical evidence that the Department once ran a developer community, not as a
+    current portal.

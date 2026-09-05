@@ -1,0 +1,70 @@
+generated: '2026-09-05'
+method: derived
+status: candidate
+source: >-
+  openapi/bureau-of-consular-affairs-discovery-api-openapi.yml ;
+  openapi/bureau-of-consular-affairs-datastore-api-openapi.yml ;
+  openapi/bureau-of-consular-affairs-arcgis-travel-advisory-levels-layer.json
+note: >-
+  The Bureau of Consular Affairs ships no MCP server. Searched npm (@modelcontextprotocol and the
+  open registry), PyPI and the bureau's own hosts on 2026-09-05 and found only third-party wrappers
+  (e.g. the unaffiliated npm package @pipeworx/mcp-travel-advisories, 0.1.0) — none first-party, none
+  endorsed. The tool list below is a CANDIDATE derived from operations that genuinely exist in this
+  repo's contracts. No endpoint is asserted because none exists.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: derived
+server:
+  name: bureau-of-consular-affairs
+  transport: null
+  url: null
+tools:
+  - name: list_datasets
+    description: List every dataset name in the CA Data Catalog.
+    source_operation: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml#packageList
+  - name: search_datasets
+    description: Full-text search the CA Data Catalog for datasets.
+    source_operation: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml#packageSearch
+  - name: get_dataset
+    description: Retrieve one dataset with its resources.
+    source_operation: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml#packageShow
+  - name: get_resource
+    description: Retrieve one resource (file or datastore table) by id.
+    source_operation: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml#resourceShow
+  - name: search_resources
+    description: Search resources across datasets.
+    source_operation: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml#resourceSearch
+  - name: list_organizations
+    description: List the publishing organizations in the catalog.
+    source_operation: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml#organizationList
+  - name: list_tags
+    description: List the catalog's tag vocabulary.
+    source_operation: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml#tagList
+  - name: query_datastore
+    description: Query rows in a tabular resource via the CKAN datastore.
+    source_operation: openapi/bureau-of-consular-affairs-datastore-api-openapi.yml#datastoreSearch
+  - name: query_datastore_sql
+    description: Run a read-only SQL query against a datastore resource.
+    source_operation: openapi/bureau-of-consular-affairs-datastore-api-openapi.yml#datastoreSearchSql
+  - name: get_travel_advisory
+    description: Get the current Travel Advisory level (1-4) and advisory URL for a country.
+    source_operation: >-
+      openapi/bureau-of-consular-affairs-arcgis-travel-advisory-levels-layer.json#FeatureServer/54/query
+    note: >-
+      Backed by the ArcGIS Feature Service query interface, not by an OpenAPI operation. Input is a
+      where clause on ISO_3 or NAME; output is NAME, LEVEL_, URL, ADVDATE.
+  - name: find_embassy
+    description: Find the U.S. embassy or consulate serving a country or city.
+    source_operation: >-
+      openapi/bureau-of-consular-affairs-arcgis-embassy-consulate-locations-layer.json#FeatureServer/0/query
+excluded_operations:
+  - operationId: packageCreate
+    reason: Write action requiring a CKAN API token; not appropriate as an unattended agent tool.
+  - operationId: packageUpdate
+    reason: Write action requiring a CKAN API token; packageUpdate has no reversal path.
+  - operationId: packageDelete
+    reason: Write action requiring a CKAN API token.

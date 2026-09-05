@@ -1,6 +1,7 @@
-generated: '2026-07-11'
+generated: '2026-09-05'
 method: derived
-source: openapi/bureau-of-consular-affairs-openapi.yml
+source: openapi/bureau-of-consular-affairs-datastore-api-openapi.yml, openapi/bureau-of-consular-affairs-discovery-api-openapi.yml,
+  openapi/bureau-of-consular-affairs-write-api-openapi.yml
 summary:
   types:
   - apiKey
@@ -13,4 +14,6 @@ schemes:
   parameter: Authorization
   description: CKAN API token, generated from the CKAN user profile.
   sources:
-  - openapi/bureau-of-consular-affairs-openapi.yml
+  - openapi/bureau-of-consular-affairs-datastore-api-openapi.yml
+  - openapi/bureau-of-consular-affairs-discovery-api-openapi.yml
+  - openapi/bureau-of-consular-affairs-write-api-openapi.yml

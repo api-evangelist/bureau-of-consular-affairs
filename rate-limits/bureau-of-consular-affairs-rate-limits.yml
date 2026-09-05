@@ -3,100 +3,69 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Bureau of Consular Affairs
 providerId: bureau-of-consular-affairs
+generated: '2026-09-05'
+method: searched
+source: >-
+  https://cadatacatalog.state.gov/ ; https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services ;
+  live probes 2026-09-05
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-05'
+limit_count: 0
+limits: []
+headers: {}
+responseCodes: {}
+description: >-
+  The Bureau of Consular Affairs publishes no rate limits for any surface, and none could be observed.
+  No X-RateLimit-*, RateLimit-* or Retry-After header is documented anywhere, and no 429 contract is
+  stated. limit_count 0 is an honest zero: the bureau has not written the limits down.
+note: >-
+  This file previously carried a five-row Free / Professional / Enterprise scaffold written by the
+  2026-05-04 bulk sweep — 10, 100 and 1,000 requests per minute against invented monthly quotas, plus
+  a full set of X-RateLimit-* response headers the API does not send. None of it was published by the
+  bureau. Replaced 2026-09-05 with what is actually knowable.
+undocumented_but_observed:
+  - surface: cadatacatalog.state.gov (CKAN Action API)
+    finding: >-
+      Not a rate limit but the wall a consumer actually hits — the host is fronted by a Cloudflare WAF
+      that returned HTTP 403 "Sorry, you have been blocked" to every request from this pipeline on
+      2026-09-05, including the plain CKAN action /api/3/action/status_show, on both HTTP and HTTPS
+      and across four different User-Agent strings. This is a categorical block, not throttling: it
+      does not relent with backoff and it is applied before any quota is consulted.
+    evidence:
+      - url: https://cadatacatalog.state.gov/api/3/action/package_list
+        status: 403
+        fetched: '2026-09-05'
+  - surface: travel.state.gov
+    finding: >-
+      The same Cloudflare WAF blocks every page path with 403, but the /_res/rss/ feed paths are
+      exempt and returned 200 (1.1 MB, 216 items) on the same run.
+    evidence:
+      - url: https://travel.state.gov/_res/rss/TAsTWs.xml
+        status: 200
+        fetched: '2026-09-05'
+      - url: https://travel.state.gov/content/travel/en/rss.html
+        status: 403
+        fetched: '2026-09-05'
+ceilings:
+  - surface: ArcGIS Feature Services
+    kind: page-size
+    field: maxRecordCount
+    limit: 2000
+    unit: features per query
+    truncation_signal: exceededTransferLimit
+    detail: >-
+      Declared in the service's own descriptor and enforced per query. Not a rate limit — it caps one
+      response, not a request rate — but it is the only hard, provider-published numeric ceiling on
+      any surface in this profile, and a consumer must page with resultOffset / resultRecordCount to
+      get past it.
+    evidence:
+      - url: https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/Travel_Advisory_Levels__(2024)_View_Layer/FeatureServer/54
+        status: 200
+        fetched: '2026-09-05'
 tags:
   - Federal Government
-  - Passports
-  - Travel
-  - Travel Advisories
-  - Visas
+  - Open Data
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Bureau of Consular Affairs API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Bureau of Consular Affairs Data Catalog (CKAN API)
-      - Travel Advisories API
-      - Passport Issuance Statistics
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Bureau of Consular Affairs Data Catalog (CKAN API)
-      - Travel Advisories API
-      - Passport Issuance Statistics
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Bureau of Consular Affairs Data Catalog (CKAN API)
-      - Travel Advisories API
-      - Passport Issuance Statistics
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Bureau of Consular Affairs Data Catalog (CKAN API)
-      - Travel Advisories API
-      - Passport Issuance Statistics
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Bureau of Consular Affairs Data Catalog (CKAN API)
-      - Travel Advisories API
-      - Passport Issuance Statistics
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

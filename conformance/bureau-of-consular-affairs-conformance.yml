@@ -1,0 +1,79 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/*.yml ; openapi/bureau-of-consular-affairs-arcgis-*.json ;
+  https://travel.state.gov/_res/rss/TAsTWs.xml ; https://docs.ckan.org/en/latest/api/index.html
+note: >-
+  Derived from the contracts actually held in this repo plus live probes. Nothing here is a
+  compliance claim by the bureau — the bureau publishes no certifications page — so no Compliance
+  pointer is emitted.
+standards:
+  - id: ckan-action-api
+    conforms: true
+    evidence: >-
+      The CA Data Catalog is a stock CKAN deployment: every operation is /api/3/action/{action_name}
+      and the harvested OpenAPI describes 18 standard CKAN actions (packageList, packageShow,
+      packageSearch, datastoreSearch, datastoreSearchSql, groupList, organizationList, tagList,
+      packageCreate/Update/Delete). See openapi/bureau-of-consular-affairs-discovery-api-openapi.yml.
+  - id: arcgis-rest-feature-service
+    conforms: true
+    evidence: >-
+      Five public Feature Services on ArcGIS Online tenant R6wlO6UHmSzqm9Vs answer ?f=json with the
+      Esri service descriptor (currentVersion 12, capabilities "Query") and expose the standard
+      /FeatureServer/{layerId}/query interface. Saved verbatim to
+      openapi/bureau-of-consular-affairs-arcgis-*.json.
+  - id: rss-2.0
+    conforms: true
+    evidence: >-
+      https://travel.state.gov/_res/rss/TAsTWs.xml returns <rss version="2.0"> with a Dublin Core
+      namespace and 216 <item> elements (fetched 2026-09-05, HTTP 200).
+  - id: iso-3166-1-alpha-3
+    conforms: true
+    evidence: >-
+      The Travel Advisory Levels layer carries an ISO_3 field populated with alpha-3 country codes
+      (AFG, ALB observed on a live query 2026-09-05). This is the domain identifier scheme a consumer
+      needs in order to join advisories to any other country dataset without a bespoke crosswalk.
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityScheme in any spec and no OAuth documentation on any bureau host.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns no document on any probed host.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      CKAN returns its own error envelope ({help, success, error:{__type, message}}), not
+      application/problem+json. See errors/bureau-of-consular-affairs-problem-types.yml.
+  - id: json-api
+    conforms: false
+    evidence: Responses are CKAN's own {help, success, result} envelope, not JSON:API.
+  - id: odata
+    conforms: false
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No Idempotency-Key header or replay-protection parameter in any spec or in the CKAN Action API.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      limit/offset query parameters on packageList and the CKAN search actions; the ArcGIS Feature
+      Services page with resultOffset/resultRecordCount against a maxRecordCount of 2000 and signal
+      truncation with exceededTransferLimit (observed on a live query 2026-09-05).
+  - id: ogc-api-features
+    conforms: false
+    evidence: >-
+      Probed on the Travel Advisory Levels service — /OGCFeatureServer, /OGCFeatureServer/conformance,
+      /OGCFeatureServer/collections and /WFSServer all return Esri's {"error":{"code":400,"message":
+      "Invalid URL"}}. The OGC API Features and WFS capabilities are not enabled on this tenant's
+      services, so there is no conformsTo[] document and no GetCapabilities to save.
+domain_standards:
+  - id: iso-3166-1-alpha-3
+    market: travel-and-consular data
+    declared_in: >-
+      openapi/bureau-of-consular-affairs-arcgis-travel-advisory-levels-layer.json — field ISO_3,
+      esriFieldTypeString
+    conforms: true
+    note: >-
+      Reward-only. The travel-risk market has no formal interchange standard of its own; ISO 3166-1
+      alpha-3 in the contract is what lets an integrator join a Level 1-4 advisory to any other
+      country-keyed dataset without writing a name-matching table.

@@ -1,0 +1,29 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Bureau of Consular Affairs discovery-api
+  version: 1.0.0
+extends: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml
+x-provenance:
+  generated: '2026-09-05'
+  method: generated
+  source: openapi/bureau-of-consular-affairs-discovery-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: bureau-of-consular-affairs
+      x-apievangelist-surface: CKAN Action API on the CA Data Catalog
+      x-apievangelist-artifacts:
+        authentication: authentication/bureau-of-consular-affairs-authentication.yml
+        conventions: conventions/bureau-of-consular-affairs-conventions.yml
+        errors: errors/bureau-of-consular-affairs-problem-types.yml
+        data_model: data-model/bureau-of-consular-affairs-data-model.yml
+        conformance: conformance/bureau-of-consular-affairs-conformance.yml
+        lifecycle: lifecycle/bureau-of-consular-affairs-lifecycle.yml
+      x-apievangelist-warning: >-
+        This API returns HTTP 200 on failure. Read the "success" boolean in the response body; the
+        status code is not the signal. See the error catalog artifact.
+      x-apievangelist-idempotency: none
+      x-apievangelist-host-access: >-
+        cadatacatalog.state.gov is fronted by a Cloudflare WAF that returned 403 to every automated
+        request from this pipeline on 2026-09-05. The operations described here are documented, not
+        observed against the live host.

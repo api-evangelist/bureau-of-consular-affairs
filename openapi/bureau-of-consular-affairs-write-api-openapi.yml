@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: CA Data Catalog (CKAN) Datastore Write API
   description: 'Best-effort OpenAPI 3.1 description of the Bureau of Consular Affairs (CA) Data Catalog
@@ -101,35 +101,6 @@ paths:
                 $ref: '#/components/schemas/SuccessBoolean'
 components:
   schemas:
-    Resource:
-      type: object
-      properties:
-        id:
-          type: string
-        package_id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        format:
-          type: string
-        url:
-          type: string
-        mimetype:
-          type: string
-        size:
-          type: integer
-        created:
-          type: string
-          format: date-time
-        last_modified:
-          type: string
-          format: date-time
-        datastore_active:
-          type: boolean
-        state:
-          type: string
     Package:
       type: object
       properties:
@@ -189,6 +160,35 @@ components:
                 type: string
               value:
                 type: string
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        package_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        format:
+          type: string
+        url:
+          type: string
+        mimetype:
+          type: string
+        size:
+          type: integer
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type: string
+          format: date-time
+        datastore_active:
+          type: boolean
+        state:
+          type: string
     PackageResult:
       type: object
       properties:

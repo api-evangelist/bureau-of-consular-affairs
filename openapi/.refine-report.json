@@ -13,6 +13,11 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "bureau-of-consular-affairs-datastore-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "bureau-of-consular-affairs-discovery-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "bureau-of-consular-affairs-write-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

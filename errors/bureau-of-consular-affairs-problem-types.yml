@@ -1,0 +1,74 @@
+generated: '2026-09-05'
+method: searched
+format: ckan-action-envelope
+source: https://docs.ckan.org/en/latest/api/index.html
+note: >-
+  The bureau publishes no error reference of its own, and the harvested OpenAPI declares only 200
+  responses — so nothing could be derived from the spec. What IS documented is the CKAN Action API
+  error contract of the platform the CA Data Catalog runs on, recorded here with that provenance
+  stated plainly. It could NOT be confirmed against the live deployment: cadatacatalog.state.gov
+  answers 403 to this crawler on every path behind a Cloudflare WAF (see
+  well-known/bureau-of-consular-affairs-well-known.yml), so every entry below is the upstream
+  platform contract, not an observed response from this bureau's host.
+verified_against_live_host: false
+envelope:
+  shape: '{ "help": "<url>", "success": false, "error": { "__type": "<name>", "message": "<text>" } }'
+  success_shape: '{ "help": "<url>", "success": true, "result": <any> }'
+  discriminator: error.__type
+  content_type: application/json
+  status_code_note: >-
+    CKAN aims to return 200 OK whether or not the action succeeded — the success flag, not the HTTP
+    status, is the signal. Its docs state that "if there are major formatting problems with a request
+    to the API, CKAN may still return an HTTP response with a 409, 400 or 500 status code (in
+    increasing order of severity)". An agent that branches on HTTP status alone will read failures
+    as successes against this API.
+problems:
+  - type: Authorization Error
+    title: Access denied
+    http_status: 200
+    envelope_field: error.__type
+    remediation: >-
+      Supply a CKAN API token in the Authorization header. Applies to the write surface
+      (packageCreate, packageUpdate, packageDelete); the discovery and datastore actions are public.
+    source: https://docs.ckan.org/en/latest/api/index.html
+  - type: Not Found Error
+    title: Resource not found
+    http_status: 200
+    envelope_field: error.__type
+    remediation: Check the id/name passed to packageShow, resourceShow, groupShow or organizationShow.
+    source: https://docs.ckan.org/en/latest/api/index.html
+  - type: Validation Error
+    title: Invalid request parameters
+    http_status: 200
+    envelope_field: error.__type
+    remediation: >-
+      The message body carries a per-field dictionary of what failed. Most common on packageCreate /
+      packageUpdate.
+    source: https://docs.ckan.org/en/latest/api/index.html
+  - type: (transport) 400
+    title: Malformed request
+    http_status: 400
+    remediation: Request could not be parsed; correct the JSON body or query string.
+    source: https://docs.ckan.org/en/latest/api/index.html
+  - type: (transport) 409
+    title: Conflict
+    http_status: 409
+    remediation: Returned on formatting problems that CKAN classifies as a conflict.
+    source: https://docs.ckan.org/en/latest/api/index.html
+  - type: (transport) 500
+    title: Server error
+    http_status: 500
+    remediation: Retry with backoff; escalate through the catalog contact if persistent.
+    source: https://docs.ckan.org/en/latest/api/index.html
+arcgis_surface:
+  note: >-
+    The ArcGIS Feature Services use a different envelope again — a 200 carrying
+    {"error":{"code":400,"message":"Invalid URL","details":[...]}}. Observed live on 2026-09-05 while
+    probing /OGCFeatureServer on the Travel Advisory Levels service. Same trap as CKAN: the HTTP
+    status is 200 and the failure is in the body.
+  problems:
+    - type: esri-error
+      code: 400
+      title: Invalid URL
+      http_status: 200
+      source: https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services

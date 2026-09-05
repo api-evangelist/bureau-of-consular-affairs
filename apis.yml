@@ -44,7 +44,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bureau-of-consular-affairs.png
 access: 3rd-Party
 created: '2024-11-25'
-modified: '2026-04-21'
+modified: '2026-09-05'
 position: Consuming
 description: >-
   The Bureau of Consular Affairs (CA) is a bureau of the United States
@@ -87,16 +87,29 @@ apis:
   - Travel
   - Travel Advisories
   humanURL: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/
-  baseURL: https://travel.state.gov
+  baseURL: https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/Travel_Advisory_Levels__(2024)_View_Layer/FeatureServer
   properties:
   - url: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/
     type: Documentation
+  - url: openapi/bureau-of-consular-affairs-arcgis-travel-advisory-levels-layer.json
+    type: ArcGIS
+  - url: openapi/bureau-of-consular-affairs-arcgis-travel-advisory-levels-featureserver.json
+    type: ArcGIS
+  - url: https://travel.state.gov/_res/rss/TAsTWs.xml
+    type: RSS
   - url: https://travelmaps.state.gov/TSGMap/
-    type: DataAPI
+    type: Application
+  - url: skills/bureau-of-consular-affairs-check-travel-advisory.md
+    type: AgentSkill
   description: >-
-    The State Department publishes travel advisory levels (Level 1-4) for every country. Advisory data
-    is available for consumption by travel applications and services to help inform travelers about safety
-    conditions.
+    The State Department publishes travel advisory levels (Level 1-4) for every country. The
+    machine-readable surface is an ArcGIS Online Feature Service on the bureau's own Esri tenant
+    (R6wlO6UHmSzqm9Vs): one polygon per country carrying LEVEL_ (1-4), the ISO 3166-1 alpha-3 code,
+    the advisory date and the URL of the human advisory page. Anonymous, no key, capabilities Query,
+    maxRecordCount 2000. A dated RSS feed of the same advisories is published at
+    travel.state.gov/_res/rss/TAsTWs.xml (216 items observed 2026-09-05) and is the only change
+    signal the bureau offers. baseURL was https://travel.state.gov, the website root, which named no
+    API host; corrected 2026-09-05 to the Feature Service that actually answers.
 - aid: bureau-of-consular-affairs:passport-issuance-statistics
   name: Passport Issuance Statistics
   tags:
@@ -108,6 +121,7 @@ apis:
   - Passports
   - Statistics
   humanURL: https://cadatacatalog.state.gov/dataset/passportstatistics
+  baseURL: https://cadatacatalog.state.gov/api/3/action
   properties:
   - url: https://cadatacatalog.state.gov/dataset/passportstatistics
     type: DataAPI
@@ -116,6 +130,54 @@ apis:
   description: >-
     Annual and monthly passport issuance statistics published by the Bureau of Consular Affairs, available
     as downloadable datasets through the CA data catalog.
+- aid: bureau-of-consular-affairs:embassy-and-consulate-locations
+  name: Embassy and Consulate Locations
+  tags:
+  - Federal-Government
+  - Consular Services
+  - Embassies
+  - Geospatial
+  tags_raw:
+  - Federal Government
+  - Consular Services
+  - Embassies
+  - Geospatial
+  humanURL: https://www.state.gov/bureaus-offices/under-secretary-for-management/bureau-of-consular-affairs/
+  baseURL: https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/Embassy_and_Consulate_Locations_View_Layer/FeatureServer
+  properties:
+  - url: openapi/bureau-of-consular-affairs-arcgis-embassy-consulate-locations-layer.json
+    type: ArcGIS
+  - url: openapi/bureau-of-consular-affairs-arcgis-embassy-consulate-locations-featureserver.json
+    type: ArcGIS
+  - url: skills/bureau-of-consular-affairs-find-embassy.md
+    type: AgentSkill
+  description: >-
+    Public ArcGIS Feature Service listing every U.S. embassy, consulate general, consular agency and
+    virtual presence post, with address, telephone, after-hours emergency telephone, email, website
+    and a prebuilt directions link. Carries ConSvcProv, which names the post that actually provides
+    consular services for a location — not necessarily the nearest one. Country is keyed on GENC3
+    (the U.S. Government GENC code), not ISO 3166-1, so joining posts to travel advisories needs a
+    crosswalk the bureau does not publish. Anonymous, no key.
+- aid: bureau-of-consular-affairs:intercountry-adoption-statistics
+  name: Intercountry Adoption Statistics
+  tags:
+  - Federal-Government
+  - Adoption
+  - Statistics
+  tags_raw:
+  - Federal Government
+  - Adoption
+  - Statistics
+  humanURL: https://www.state.gov/bureaus-offices/under-secretary-for-management/bureau-of-consular-affairs/
+  baseURL: https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/All_Years_Adoption_Statistics/FeatureServer
+  properties:
+  - url: openapi/bureau-of-consular-affairs-arcgis-intercountry-adoption-statistics-featureserver.json
+    type: ArcGIS
+  description: >-
+    Intercountry and U.S. adoption counts published as ArcGIS Feature Services. The bureau publishes
+    roughly fifty of these — one per year from 1999 through 2022, for both intercountry adoptions and
+    U.S. adoptions, alongside All-Years rollups. The year is encoded in the SERVICE NAME rather than
+    in a field, so building a time series means enumerating services rather than filtering one.
 - aid: bureau-of-consular-affairs:bureau-of-consular-affairs-datastore-api
   name: Bureau of Consular Affairs Datastore API
   description: Datastore queries over tabular resources.
@@ -166,7 +228,48 @@ common:
     url: https://cadatacatalog.state.gov/api/3/action/package_list
   - type: Statistics
     url: https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html
+  - type: Conventions
+    url: conventions/bureau-of-consular-affairs-conventions.yml
+  - type: Conformance
+    url: conformance/bureau-of-consular-affairs-conformance.yml
+  - type: ErrorCatalog
+    url: errors/bureau-of-consular-affairs-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/bureau-of-consular-affairs-lifecycle.yml
+  - type: DataModel
+    url: data-model/bureau-of-consular-affairs-data-model.yml
+  - type: Packages
+    url: packages/bureau-of-consular-affairs-packages.yml
+  - type: LLMsTxt
+    url: llms/bureau-of-consular-affairs-llms.txt
+  - type: Overlay
+    url: overlays/bureau-of-consular-affairs-discovery-api-overlay.yaml
+  - type: Overlay
+    url: overlays/bureau-of-consular-affairs-datastore-api-overlay.yaml
+  - type: Overlay
+    url: overlays/bureau-of-consular-affairs-write-api-overlay.yaml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Plans
+    url: plans/bureau-of-consular-affairs-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/bureau-of-consular-affairs-rate-limits.yml
+  - type: VulnerabilityDisclosure
+    url: security/bureau-of-consular-affairs-vulnerability-disclosure.yml
+  - type: Security
+    url: https://www.state.gov/bureau-of-diplomatic-technology/vulnerability-disclosure-policy
+  - type: About
+    url: https://www.state.gov/bureaus-offices/under-secretary-for-management/bureau-of-consular-affairs/
+  - type: TermsOfService
+    url: https://www.state.gov/copyright-information
+  - type: RSS
+    url: https://travel.state.gov/_res/rss/TAsTWs.xml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 specificationVersion: '0.23'
+x-enrichment:
+  date: '2026-09-05'
+  status: enriched
+  artifacts_added: 23
+  pass: local-v3

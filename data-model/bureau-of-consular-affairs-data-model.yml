@@ -1,0 +1,119 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/bureau-of-consular-affairs-discovery-api-openapi.yml ;
+  openapi/bureau-of-consular-affairs-write-api-openapi.yml ;
+  openapi/bureau-of-consular-affairs-arcgis-travel-advisory-levels-layer.json ;
+  openapi/bureau-of-consular-affairs-arcgis-embassy-consulate-locations-layer.json
+note: >-
+  Two disjoint models. The CKAN catalog models METADATA about datasets; the ArcGIS Feature Services
+  model the CONSULAR DATA itself. They do not reference each other — there is no key that joins a
+  CKAN package to an advisory layer. The only usable join across the whole estate is the ISO 3166-1
+  alpha-3 country code, and it exists on exactly one side.
+entities:
+  - name: Package
+    surface: ckan
+    description: A dataset in the CA Data Catalog.
+    primary_key: id
+    natural_key: name
+    fields: [id, name, title, notes, author, author_email, maintainer, maintainer_email,
+             license_id, owner_org, state, type, metadata_created, metadata_modified]
+    operations: [packageShow, packageList, packageSearch, currentPackageListWithResources,
+                 packageCreate, packageUpdate, packageDelete]
+  - name: Resource
+    surface: ckan
+    description: A downloadable file or datastore table attached to a Package.
+    primary_key: id
+    fields: [id, package_id, name, description, format, url, mimetype, size, created,
+             last_modified, datastore_active, state]
+    operations: [resourceShow, resourceSearch, datastoreSearch, datastoreSearchSql]
+  - name: Organization
+    surface: ckan
+    primary_key: id
+    operations: [organizationList, organizationShow]
+  - name: Group
+    surface: ckan
+    primary_key: id
+    operations: [groupList, groupShow]
+  - name: Tag
+    surface: ckan
+    primary_key: name
+    operations: [tagList, tagShow]
+  - name: TravelAdvisory
+    surface: arcgis
+    description: One country polygon carrying its current Travel Advisory level (1-4).
+    primary_key: OBJECTID
+    natural_key: ISO_3
+    geometry: esriGeometryPolygon
+    fields: [OBJECTID, NAME, LEVEL_, URL, ADVDATE, ISO_3, GlobalID, EditDate, Editor,
+             AD_OD_Status, AD_OD_Text, AD_OD_Date]
+    service: >-
+      https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/Travel_Advisory_Levels__(2024)_View_Layer/FeatureServer/54
+    note: >-
+      LEVEL_ is the 1-4 advisory level; URL points back to the human advisory page on
+      travel.state.gov; ADVDATE is an epoch-millisecond date. Observed live 2026-09-05
+      (Afghanistan LEVEL_ 4, Albania LEVEL_ 2).
+  - name: EmbassyOrConsulate
+    surface: arcgis
+    description: A U.S. diplomatic or consular post with its contact and address detail.
+    primary_key: OBJECTID
+    natural_key: PostCode
+    geometry: esriGeometryPoint
+    fields: [OBJECTID, PostCode, Country, FullName, LocType, ConSvcProv, Lat, Long_, Website,
+             TelNo, EmgcyTelNo, FaxNo, EmailAddr, Address1, Address2, Address3, City,
+             ZipPostCode, GENC3, EmbassyStatus, google_directions]
+    service: >-
+      https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/Embassy_and_Consulate_Locations_View_Layer/FeatureServer/0
+    note: >-
+      Carries GENC3 (the U.S. Government GENC 3-character country code), NOT ISO_3 — so joining
+      posts to advisories requires a GENC-to-ISO crosswalk, which the bureau does not publish.
+      ConSvcProv names the post that actually provides consular services for the location, which is
+      the field a routing integration needs and the one least likely to be guessed.
+  - name: AdoptionStatistic
+    surface: arcgis
+    description: Intercountry and U.S. adoption counts, published one Feature Service per year.
+    service: >-
+      https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/All_Years_Adoption_Statistics/FeatureServer
+    note: >-
+      The estate holds ~50 per-year services (1999-2022) alongside the All_Years rollups. Year is
+      encoded in the SERVICE NAME, not in a field — a consumer wanting a time series has to enumerate
+      services rather than filter one.
+relationships:
+  - from: Package
+    to: Resource
+    kind: has_many
+    via: resources[] / Resource.package_id
+  - from: Package
+    to: Organization
+    kind: belongs_to
+    via: owner_org
+  - from: Package
+    to: Tag
+    kind: has_many
+    via: tags[].name
+  - from: Package
+    to: Group
+    kind: has_many
+    via: groups[]
+  - from: Resource
+    to: DatastoreTable
+    kind: has_one
+    via: datastore_active / resource_id
+  - from: TravelAdvisory
+    to: EmbassyOrConsulate
+    kind: has_many
+    via: 'ISO_3 <-> GENC3 (NOT a declared foreign key — codes are from different schemes)'
+    confidence: low
+id_schemes:
+  - field: ISO_3
+    scheme: ISO 3166-1 alpha-3
+    entity: TravelAdvisory
+  - field: GENC3
+    scheme: GENC 3-character country code
+    entity: EmbassyOrConsulate
+  - field: PostCode
+    scheme: Department of State post code
+    entity: EmbassyOrConsulate
+  - field: name
+    scheme: CKAN URL slug
+    entity: Package
