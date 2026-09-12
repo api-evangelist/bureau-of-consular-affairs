@@ -1,0 +1,18 @@
+{
+  "repo": "bureau-of-consular-affairs",
+  "feeds": [
+    {
+      "source": "https://travel.state.gov/_res/rss/TAsTWs.xml",
+      "feed_url": "https://travel.state.gov/_res/rss/TAsTWs.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.state.gov/copyright-information",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-09-06T19:17:18Z"
+}
