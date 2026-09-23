@@ -1,9 +1,7 @@
 {
   "provider": "bureau-of-consular-affairs",
   "sources": [
-    "bureau-of-consular-affairs-datastore-api-openapi.yml",
-    "bureau-of-consular-affairs-discovery-api-openapi.yml",
-    "bureau-of-consular-affairs-write-api-openapi.yml"
+    "_original/bureau-of-consular-affairs-openapi.yml"
   ],
   "outputs": [
     "bureau-of-consular-affairs-datastore-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "bureau-of-consular-affairs-datastore-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "bureau-of-consular-affairs-discovery-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "bureau-of-consular-affairs-write-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "bureau-of-consular-affairs-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "bureau-of-consular-affairs-datastore-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bureau-of-consular-affairs-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bureau-of-consular-affairs-write-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

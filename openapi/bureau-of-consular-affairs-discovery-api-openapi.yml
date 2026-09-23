@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: CA Data Catalog (CKAN) Datastore Discovery API
+  title: CA Data Catalog (CKAN) Discovery API
   description: 'Best-effort OpenAPI 3.1 description of the Bureau of Consular Affairs (CA) Data Catalog
 
     API. The catalog runs on the standard CKAN platform, which exposes its functionality at
@@ -12,9 +12,7 @@ info:
 
     All CA Data Catalog actions are publicly readable; write actions require an `Authorization`
 
-    header carrying a CKAN API token (obtained from the CKAN user profile).
-
-    '
+    header carrying a CKAN API token (obtained from the CKAN user profile).'
   version: '3.0'
   contact:
     name: Bureau of Consular Affairs
@@ -346,6 +344,35 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
+    PackagesResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Package'
+    ResourceResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Resource'
+    SuccessBoolean:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: boolean
     Package:
       type: object
       properties:
@@ -405,6 +432,25 @@ components:
                 type: string
               value:
                 type: string
+    PackageResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Package'
+    Result:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: object
+          additionalProperties: true
     ListResult:
       type: object
       properties:
@@ -415,15 +461,6 @@ components:
         result:
           type: array
           items: {}
-    PackageResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Package'
     Resource:
       type: object
       properties:
@@ -453,17 +490,6 @@ components:
           type: boolean
         state:
           type: string
-    PackagesResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: array
-          items:
-            $ref: '#/components/schemas/Package'
     SearchResult:
       type: object
       properties:
@@ -486,34 +512,6 @@ components:
               additionalProperties: true
             sort:
               type: string
-    Result:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: object
-          additionalProperties: true
-    SuccessBoolean:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: boolean
-    ResourceResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Resource'
   securitySchemes:
     apiToken:
       type: apiKey

@@ -12,9 +12,7 @@ info:
 
     All CA Data Catalog actions are publicly readable; write actions require an `Authorization`
 
-    header carrying a CKAN API token (obtained from the CKAN user profile).
-
-    '
+    header carrying a CKAN API token (obtained from the CKAN user profile).'
   version: '3.0'
   contact:
     name: Bureau of Consular Affairs

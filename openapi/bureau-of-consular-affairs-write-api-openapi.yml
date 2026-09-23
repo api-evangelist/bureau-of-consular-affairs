@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: CA Data Catalog (CKAN) Datastore Write API
+  title: CA Data Catalog (CKAN) Write API
   description: 'Best-effort OpenAPI 3.1 description of the Bureau of Consular Affairs (CA) Data Catalog
 
     API. The catalog runs on the standard CKAN platform, which exposes its functionality at
@@ -12,9 +12,7 @@ info:
 
     All CA Data Catalog actions are publicly readable; write actions require an `Authorization`
 
-    header carrying a CKAN API token (obtained from the CKAN user profile).
-
-    '
+    header carrying a CKAN API token (obtained from the CKAN user profile).'
   version: '3.0'
   contact:
     name: Bureau of Consular Affairs
@@ -101,6 +99,44 @@ paths:
                 $ref: '#/components/schemas/SuccessBoolean'
 components:
   schemas:
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        package_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        format:
+          type: string
+        url:
+          type: string
+        mimetype:
+          type: string
+        size:
+          type: integer
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type: string
+          format: date-time
+        datastore_active:
+          type: boolean
+        state:
+          type: string
+    SuccessBoolean:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: boolean
     Package:
       type: object
       properties:
@@ -160,35 +196,6 @@ components:
                 type: string
               value:
                 type: string
-    Resource:
-      type: object
-      properties:
-        id:
-          type: string
-        package_id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        format:
-          type: string
-        url:
-          type: string
-        mimetype:
-          type: string
-        size:
-          type: integer
-        created:
-          type: string
-          format: date-time
-        last_modified:
-          type: string
-          format: date-time
-        datastore_active:
-          type: boolean
-        state:
-          type: string
     PackageResult:
       type: object
       properties:
@@ -198,15 +205,6 @@ components:
           type: boolean
         result:
           $ref: '#/components/schemas/Package'
-    SuccessBoolean:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: boolean
   securitySchemes:
     apiToken:
       type: apiKey
