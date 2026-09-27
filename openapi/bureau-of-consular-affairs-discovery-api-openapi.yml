@@ -355,6 +355,47 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Package'
+    SearchResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: object
+          properties:
+            count:
+              type: integer
+            results:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            facets:
+              type: object
+              additionalProperties: true
+            sort:
+              type: string
+    PackageResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Package'
+    ListResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: array
+          items: {}
     ResourceResult:
       type: object
       properties:
@@ -364,6 +405,45 @@ components:
           type: boolean
         result:
           $ref: '#/components/schemas/Resource'
+    Result:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: object
+          additionalProperties: true
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        package_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        format:
+          type: string
+        url:
+          type: string
+        mimetype:
+          type: string
+        size:
+          type: integer
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type: string
+          format: date-time
+        datastore_active:
+          type: boolean
+        state:
+          type: string
     SuccessBoolean:
       type: object
       properties:
@@ -432,86 +512,6 @@ components:
                 type: string
               value:
                 type: string
-    PackageResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Package'
-    Result:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: object
-          additionalProperties: true
-    ListResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: array
-          items: {}
-    Resource:
-      type: object
-      properties:
-        id:
-          type: string
-        package_id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        format:
-          type: string
-        url:
-          type: string
-        mimetype:
-          type: string
-        size:
-          type: integer
-        created:
-          type: string
-          format: date-time
-        last_modified:
-          type: string
-          format: date-time
-        datastore_active:
-          type: boolean
-        state:
-          type: string
-    SearchResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: object
-          properties:
-            count:
-              type: integer
-            results:
-              type: array
-              items:
-                type: object
-                additionalProperties: true
-            facets:
-              type: object
-              additionalProperties: true
-            sort:
-              type: string
   securitySchemes:
     apiToken:
       type: apiKey

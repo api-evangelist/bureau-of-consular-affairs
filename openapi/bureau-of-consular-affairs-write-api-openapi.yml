@@ -128,6 +128,15 @@ components:
           type: boolean
         state:
           type: string
+    PackageResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Package'
     SuccessBoolean:
       type: object
       properties:
@@ -196,15 +205,6 @@ components:
                 type: string
               value:
                 type: string
-    PackageResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Package'
   securitySchemes:
     apiToken:
       type: apiKey

@@ -3,7 +3,7 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/bureau-of-consular-affairs/refs/heads/main/apis.yml
 name: Bureau of Consular Affairs
 tags:
-  - Federal-Government
+  - Federal Government
   - Passports
   - Travel
   - Travel Advisories
@@ -14,6 +14,7 @@ tags_raw:
   - Travel
   - Travel Advisories
   - Visas
+  - Federal-Government
 type: Index
 kind: government
 deliveryModel:
@@ -58,13 +59,14 @@ apis:
   tags:
   - CKAN
   - Data Catalog
-  - Federal-Government
+  - Federal Government
   - Open Data
   tags_raw:
   - CKAN
   - Data Catalog
   - Federal Government
   - Open Data
+  - Federal-Government
   humanURL: https://cadatacatalog.state.gov/
   baseURL: https://cadatacatalog.state.gov/api/3/action
   properties:
@@ -79,13 +81,14 @@ apis:
 - aid: bureau-of-consular-affairs:travel-advisories
   name: Travel Advisories API
   tags:
-  - Federal-Government
+  - Federal Government
   - Travel
   - Travel Advisories
   tags_raw:
   - Federal Government
   - Travel
   - Travel Advisories
+  - Federal-Government
   humanURL: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/
   baseURL: https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/Travel_Advisory_Levels__(2024)_View_Layer/FeatureServer
   properties:
@@ -113,13 +116,14 @@ apis:
 - aid: bureau-of-consular-affairs:passport-issuance-statistics
   name: Passport Issuance Statistics
   tags:
-  - Federal-Government
+  - Federal Government
   - Passports
   - Statistics
   tags_raw:
   - Federal Government
   - Passports
   - Statistics
+  - Federal-Government
   humanURL: https://cadatacatalog.state.gov/dataset/passportstatistics
   baseURL: https://cadatacatalog.state.gov/api/3/action
   properties:
@@ -133,7 +137,7 @@ apis:
 - aid: bureau-of-consular-affairs:embassy-and-consulate-locations
   name: Embassy and Consulate Locations
   tags:
-  - Federal-Government
+  - Federal Government
   - Consular Services
   - Embassies
   - Geospatial
@@ -142,6 +146,7 @@ apis:
   - Consular Services
   - Embassies
   - Geospatial
+  - Federal-Government
   humanURL: https://www.state.gov/bureaus-offices/under-secretary-for-management/bureau-of-consular-affairs/
   baseURL: https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/Embassy_and_Consulate_Locations_View_Layer/FeatureServer
   properties:
@@ -161,13 +166,14 @@ apis:
 - aid: bureau-of-consular-affairs:intercountry-adoption-statistics
   name: Intercountry Adoption Statistics
   tags:
-  - Federal-Government
+  - Federal Government
   - Adoption
   - Statistics
   tags_raw:
   - Federal Government
   - Adoption
   - Statistics
+  - Federal-Government
   humanURL: https://www.state.gov/bureaus-offices/under-secretary-for-management/bureau-of-consular-affairs/
   baseURL: https://services6.arcgis.com/R6wlO6UHmSzqm9Vs/arcgis/rest/services/All_Years_Adoption_Statistics/FeatureServer
   properties:
