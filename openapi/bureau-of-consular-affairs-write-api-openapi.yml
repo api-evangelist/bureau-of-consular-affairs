@@ -99,6 +99,53 @@ paths:
                 $ref: '#/components/schemas/SuccessBoolean'
 components:
   schemas:
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        package_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        format:
+          type: string
+        url:
+          type: string
+        mimetype:
+          type: string
+        size:
+          type: integer
+        created:
+          type: string
+          format: date-time
+        last_modified:
+          type: string
+          format: date-time
+        datastore_active:
+          type: boolean
+        state:
+          type: string
+    SuccessBoolean:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: boolean
+    PackageResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Package'
     Package:
       type: object
       properties:
@@ -158,53 +205,6 @@ components:
                 type: string
               value:
                 type: string
-    PackageResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Package'
-    Resource:
-      type: object
-      properties:
-        id:
-          type: string
-        package_id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        format:
-          type: string
-        url:
-          type: string
-        mimetype:
-          type: string
-        size:
-          type: integer
-        created:
-          type: string
-          format: date-time
-        last_modified:
-          type: string
-          format: date-time
-        datastore_active:
-          type: boolean
-        state:
-          type: string
-    SuccessBoolean:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: boolean
   securitySchemes:
     apiToken:
       type: apiKey
