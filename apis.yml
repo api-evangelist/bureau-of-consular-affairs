@@ -216,6 +216,8 @@ apis:
   - type: OpenAPI
     url: openapi/bureau-of-consular-affairs-write-api-openapi.yml
 common:
+  - type: FinOps
+    url: finops/bureau-of-consular-affairs-finops.yml
   - type: AgenticAccess
     url: agentic-access/bureau-of-consular-affairs-agentic-access.yml
   - type: DomainSecurity
