@@ -344,7 +344,7 @@ paths:
                 $ref: '#/components/schemas/Result'
 components:
   schemas:
-    Result:
+    SearchResult:
       type: object
       properties:
         help:
@@ -353,7 +353,28 @@ components:
           type: boolean
         result:
           type: object
-          additionalProperties: true
+          properties:
+            count:
+              type: integer
+            results:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+            facets:
+              type: object
+              additionalProperties: true
+            sort:
+              type: string
+    ResourceResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Resource'
     ListResult:
       type: object
       properties:
@@ -423,6 +444,25 @@ components:
                 type: string
               value:
                 type: string
+    Result:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: object
+          additionalProperties: true
+    PackageResult:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          $ref: '#/components/schemas/Package'
     PackagesResult:
       type: object
       properties:
@@ -434,15 +474,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Package'
-    PackageResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Package'
     Resource:
       type: object
       properties:
@@ -472,28 +503,6 @@ components:
           type: boolean
         state:
           type: string
-    SearchResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: object
-          properties:
-            count:
-              type: integer
-            results:
-              type: array
-              items:
-                type: object
-                additionalProperties: true
-            facets:
-              type: object
-              additionalProperties: true
-            sort:
-              type: string
     SuccessBoolean:
       type: object
       properties:
@@ -503,15 +512,6 @@ components:
           type: boolean
         result:
           type: boolean
-    ResourceResult:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          $ref: '#/components/schemas/Resource'
   securitySchemes:
     apiToken:
       type: apiKey

@@ -128,15 +128,6 @@ components:
           type: boolean
         state:
           type: string
-    SuccessBoolean:
-      type: object
-      properties:
-        help:
-          type: string
-        success:
-          type: boolean
-        result:
-          type: boolean
     PackageResult:
       type: object
       properties:
@@ -146,6 +137,15 @@ components:
           type: boolean
         result:
           $ref: '#/components/schemas/Package'
+    SuccessBoolean:
+      type: object
+      properties:
+        help:
+          type: string
+        success:
+          type: boolean
+        result:
+          type: boolean
     Package:
       type: object
       properties:
