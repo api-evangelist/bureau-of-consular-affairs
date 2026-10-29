@@ -1,4 +1,4 @@
-# Bureau of Consular Affairs (bureau-of-consular-affairs)
+# Bureau of Consular Affairs
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,99 +66,140 @@
 
 The Bureau of Consular Affairs (CA) is a bureau of the United States Department of State responsible for administering laws, formulating regulations, and implementing policies related to consular services and immigration. CA provides travel advisories, passport and visa information, and publishes datasets through its data catalog accessible via the CKAN API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/bureau-of-consular-affairs/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/bureau-of-consular-affairs/refs/heads/main/apis.yml)
+**Areas:** Federal Government · Passports · Travel · Travel Advisories · Visa
 
-## Scope
+## Bureau of Consular Affairs on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Bureau of Consular Affairs is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bureau-of-consular-affairs/](https://apis.io/providers/bureau-of-consular-affairs/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (8)
 
-- Federal Government
-- Passports
-- Travel
-- Travel Advisories
-- Visas
+- [Bureau of Consular Affairs Data Catalog (CKAN API)](https://apis.io/apis/bureau-of-consular-affairs/ca-data-catalog-ckan-api/) — The CA Data Catalog provides access to datasets from the Bureau of Consular Affairs via the CKAN API. It includes passport issuance statistics, visa…
+- [Travel Advisories API](https://apis.io/apis/bureau-of-consular-affairs/travel-advisories/) — The State Department publishes travel advisory levels (Level 1-4) for every country. The machine-readable surface is an ArcGIS Online Feature Service on the…
+- [Passport Issuance Statistics](https://apis.io/apis/bureau-of-consular-affairs/passport-issuance-statistics/) — Annual and monthly passport issuance statistics published by the Bureau of Consular Affairs, available as downloadable datasets through the CA data catalog.
+- [Embassy and Consulate Locations](https://apis.io/apis/bureau-of-consular-affairs/embassy-and-consulate-locations/) — Public ArcGIS Feature Service listing every U.S. embassy, consulate general, consular agency and virtual presence post, with address, telephone, after-hours…
+- [Intercountry Adoption Statistics](https://apis.io/apis/bureau-of-consular-affairs/intercountry-adoption-statistics/) — Intercountry and U.S. adoption counts published as ArcGIS Feature Services. The bureau publishes roughly fifty of these — one per year from 1999 through…
+- [Bureau of Consular Affairs Datastore API](https://apis.io/apis/bureau-of-consular-affairs/bureau-of-consular-affairs-datastore-api/) — Datastore queries over tabular resources.
+- [Bureau of Consular Affairs Discovery API](https://apis.io/apis/bureau-of-consular-affairs/bureau-of-consular-affairs-discovery-api/) — Read-only discovery actions (packages, groups, organizations, tags).
+- [Bureau of Consular Affairs Write API](https://apis.io/apis/bureau-of-consular-affairs/bureau-of-consular-affairs-write-api/) — Write actions (require API token).
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-25
-- **Modified:** 2026-04-21
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Bureau of Consular Affairs Data Catalog (CKAN API)
+Model Context Protocol servers that expose the API to agents.
 
-The CA Data Catalog provides access to datasets from the Bureau of Consular Affairs via the CKAN API. It includes passport issuance statistics, visa issuance data, adoption statistics, and other consular affairs data. The CKAN API supports dataset search, retrieval, and resource downloads.
+- [bureau-of-consular-affairs](https://apis.io/servers/bureau-of-consular-affairs/bureau-of-consular-affairs/)
 
-- **Human URL:** [https://cadatacatalog.state.gov/](https://cadatacatalog.state.gov/)
-- **Base URL:** `https://cadatacatalog.state.gov/api/3/action`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- CKAN
-- Data Catalog
-- Federal Government
-- Open Data
+- [Bureau Of Consular Affairs Agentic Access](https://apis.io/agentic-access/bureau-of-consular-affairs/bureau-of-consular-affairs-agentic-access/)
 
-#### Properties
+#### Collections (4)
 
-- [Documentation](https://cadatacatalog.state.gov/dataset/)
-- [Data A P I](https://cadatacatalog.state.gov/api/3)
-- [Postman Collection](collections/bureau-of-consular-affairs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bureau-of-consular-affairs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### Travel Advisories API
+- [CA Data Catalog (CKAN) API](https://apis.io/collections/bureau-of-consular-affairs/open-bureau-of-consular-affairs/)
+- [CA Data Catalog (CKAN) Datastore API](https://apis.io/collections/bureau-of-consular-affairs/open-bureau-of-consular-affairs-datastore-api/)
+- [CA Data Catalog (CKAN) Datastore Discovery API](https://apis.io/collections/bureau-of-consular-affairs/open-bureau-of-consular-affairs-discovery-api/)
+- [CA Data Catalog (CKAN) Datastore Write API](https://apis.io/collections/bureau-of-consular-affairs/open-bureau-of-consular-affairs-write-api/)
 
-The State Department publishes travel advisory levels (Level 1-4) for every country. Advisory data is available for consumption by travel applications and services to help inform travelers about safety conditions.
+#### Overlays (3)
 
-- **Human URL:** [https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/](https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/)
-- **Base URL:** `https://travel.state.gov`
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Tags
+- [Bureau Of Consular Affairs Datastore Api Overlay](https://apis.io/overlays/bureau-of-consular-affairs/bureau-of-consular-affairs-datastore-api-overlay/)
+- [Bureau Of Consular Affairs Discovery Api Overlay](https://apis.io/overlays/bureau-of-consular-affairs/bureau-of-consular-affairs-discovery-api-overlay/)
+- [Bureau Of Consular Affairs Write Api Overlay](https://apis.io/overlays/bureau-of-consular-affairs/bureau-of-consular-affairs-write-api-overlay/)
 
-- Federal Government
-- Travel
-- Travel Advisories
+#### Security (3)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/)
-- [Data A P I](https://travelmaps.state.gov/TSGMap/)
-- [Postman Collection](collections/bureau-of-consular-affairs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bureau-of-consular-affairs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Bureau Of Consular Affairs Authentication](https://apis.io/security/bureau-of-consular-affairs/bureau-of-consular-affairs-authentication/)
+- [Bureau Of Consular Affairs Domain Security](https://apis.io/security/bureau-of-consular-affairs/bureau-of-consular-affairs-domain-security/)
+- [Bureau Of Consular Affairs Vulnerability Disclosure](https://apis.io/security/bureau-of-consular-affairs/bureau-of-consular-affairs-vulnerability-disclosure/)
 
-### Passport Issuance Statistics
+#### Plans and pricing (1)
 
-Annual and monthly passport issuance statistics published by the Bureau of Consular Affairs, available as downloadable datasets through the CA data catalog.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://cadatacatalog.state.gov/dataset/passportstatistics](https://cadatacatalog.state.gov/dataset/passportstatistics)
+- [Bureau Of Consular Affairs Plans Pricing](https://apis.io/plans/bureau-of-consular-affairs/bureau-of-consular-affairs-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- Federal Government
-- Passports
-- Statistics
+Published request limits.
 
-#### Properties
+- [Bureau Of Consular Affairs Rate Limits](https://apis.io/rate-limits/bureau-of-consular-affairs/bureau-of-consular-affairs-rate-limits/)
 
-- [Data A P I](https://cadatacatalog.state.gov/dataset/passportstatistics)
-- [Documentation](https://cadatacatalog.state.gov/dataset/passportstatistics)
-- [Postman Collection](collections/bureau-of-consular-affairs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bureau-of-consular-affairs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### FinOps (1)
 
-## Common Properties
+What the API costs to run, by operation.
 
-- [LinkedIn](https://www.linkedin.com/company/bureau-of-consular-affairs)
+- [Bureau Of Consular Affairs Finops](https://apis.io/finops/bureau-of-consular-affairs/bureau-of-consular-affairs-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://travel.state.gov/)
-- [Portal](https://cadatacatalog.state.gov/)
-- [Privacy Policy](https://travel.state.gov/content/travel/en/legal/privacy-policy.html)
-- [C K A N  A P I](https://cadatacatalog.state.gov/api/3/action/package_list)
-- [Statistics](https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics.html)
+- [Security](https://www.state.gov/bureau-of-diplomatic-technology/vulnerability-disclosure-policy)
+- [Terms of service](https://www.state.gov/copyright-information)
+- [Privacy policy](https://travel.state.gov/content/travel/en/legal/privacy-policy.html)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 44.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.7 |
+| Access clarity | 21.1 |
+
+**Agent readiness 23.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 30.4** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bureau-of-consular-affairs/](https://apis.io/providers/bureau-of-consular-affairs/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Bureau of Consular Affairs: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bureau-of-consular-affairs/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
